@@ -1,0 +1,255 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.table_overall {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.skill_table {
+  width: 250px;
+}
+
+.equip_table {
+  width: 240px;
+}
+
+.counter_table {
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+}
+
+.counter_table:nth-child(odd) {
+  background-color: white;
+  transition: 0.3s;
+}
+
+.counter_table:nth-child(even) {
+  background-color: #F0F8FF;
+  transition: 0.3s;
+}
+
+.counter_table:nth-child(odd):hover {
+  background-color: #bbf2bd;
+}
+
+.counter_table:nth-child(even):hover {
+  background-color: #9cdced;
+}
+
+.icon_image {
+  margin: 10px;
+  display:inline-table;
+}
+
+.text {
+  display: inline-table;
+  width: 120px;
+  margin-right: auto;
+}
+
+.label {
+  display: inline-table;
+  width: 200px;
+}
+
+.checkbox{
+  display: inline-table;
+  margin-right: 10px;
+}
+
+.select_option {
+  display: inline-block;
+  margin: 10px;
+  padding-left: 3px;
+}
+
+.input_field {
+  display: flex;
+  flex-direction: column;
+  outline: auto;
+  border-radius: 10px;
+  margin: 10px 5px;
+}
+
+.table_header {
+  display: flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background-color:rgb(226, 175, 255);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.input_main_table {
+  max-width: 420px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.input_table {
+  padding: 10px;
+}
+
+.input_table:hover {
+  background-color: #c5e2fc;
+  transition: 0.3s;
+}
+
+.input {
+  border-radius: 10px;
+  padding-left: 10px;
+  margin-left: 10px;
+  float: right;
+}
+
+.input:focus {
+  background-color:bisque;
+}
+
+.counters_div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-self: flex-start;
+}
+
+.wse_div {
+  width: 100%;
+  margin: 20px 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.wse_table {
+  display: flex;
+  flex-direction: column;
+  outline: auto;
+  border-radius: 10px;
+  margin: 10px 5px;
+  min-width: 230px;
+}
+
+.wse_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:space-between;
+}
+
+.selection_label {
+  padding-left: 10px;
+  margin-right: auto;
+}
+
+.selection_option {
+  margin: 10px;
+  padding-left: 3px;
+}
+
+.selection_row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selection_row:hover {
+  border-radius: 10px;
+  background-color: #c5e2fc;
+  transition: 0.3s;
+}
+
+.stats_div {
+  position: relative;
+  text-align: center;
+  padding-bottom: 500px;
+  margin-left: 50px;
+  margin-top: 50px;
+  width: fit-content;
+}
+
+.image-label-boss {
+  position: absolute;
+  top: 60px;
+  right: 37px;
+  font-size: 14px;
+}
+
+.image-label-damage {
+  position: absolute;
+  top: 60px;
+  left: 88px;
+  font-size: 14px;
+}
+
+.image-label-ied {
+  position: absolute;
+  top: 96px;
+  left: 80px;
+  font-size: 14px;
+}
+
+.image-label-att {
+  position: absolute;
+  top: 25px;
+  left: 80px;
+  font-size: 14px;
+}
+
+.image-label-matt {
+  position: absolute;
+  top: 42px;
+  left: 80px;
+  font-size: 14px;
+}
+
+.image-label-iedFinal {
+  position: absolute;
+  top: 113px;
+  left: 15px;
+  font-size: 14px;
+}
+
+.image-label-final-word {
+  position: absolute;
+  top: 131px;
+  left: 15px;
+  font-size: 14px;
+}
+
+.image-label-final {
+  position: absolute;
+  top: 170px;
+  left: 15px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.input-field-2 {
+
+}
+
+.table2 {
+  display: flex;
+  flex-direction: column;
+  outline: 1px bold black;
+}
