@@ -191,14 +191,14 @@ class Counters extends Component {
       {
         id: 1,
         desc: "Dawn Boss Set",
-        imageSrc: "../images/Divine King Ring.png",
+        imageSrc: require("../images/Divine King Ring.png"),
         imageDesc: "Dawn Boss Set",
         value: ["0", "1", "2", "3", "4"],
       },
       {
         id: 2,
         desc: "Dark Boss Set",
-        imageSrc: "../images/Magical Eye Patch.png",
+        imageSrc: require("../images/Magical Eye Patch.png"),
         imageDesc: "Dark Boss Set",
         value: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
       },
@@ -267,97 +267,97 @@ class Counters extends Component {
       {
         id: 1,
         desc: "Hat",
-        imageSrc: "../images/No Hat.png",
+        imageSrc: require("../images/No Hat.png"),
         imageDesc: "Hat",
         selected: "None",
         value: ["None", "Fafnir", "Absolabs", "Arcaneshade", "Eternal"],
         None: [
           {
             ied: 0,
-            imageSrc: "../images/No Hat.png",
+            imageSrc: require("../images/No Hat.png"),
           },
         ],
         Fafnir: [
           {
             ied: 10,
-            imageSrc: "../images/Fafnir Hat.png",
+            imageSrc: require("../images/Fafnir Hat.png"),
           },
         ],
         Absolabs: [
           {
             ied: 10,
-            imageSrc: "../images/Absolabs Hat.png",
+            imageSrc: require("../images/Absolabs Hat.png"),
           },
         ],
         Arcaneshade: [
           {
             ied: 15,
-            imageSrc: "../images/Arcaneshade Mage Hat.png",
+            imageSrc: require("../images/Arcaneshade Mage Hat.png"),
           },
         ],
         Eternal: [
           {
             ied: 15,
-            imageSrc: "../images/Eternal Mage Hat.png",
+            imageSrc: require("../images/Eternal Mage Hat.png"),
           },
         ],
       },
       {
         id: 2,
         desc: "Top",
-        imageSrc: "../images/No Top.png",
+        imageSrc: require("../images/No Top.png"),
         imageDesc: "Top",
         selected: "None",
         value: ["None", "Fafnir", "Eternal"],
         None: [
           {
             ied: 0,
-            imageSrc: "../images/No Top.png",
+            imageSrc: require("../images/No Top.png"),
           },
         ],
         Fafnir: [
           {
             ied: 5,
-            imageSrc: "../images/Fafnir Top.png",
+            imageSrc: require("../images/Fafnir Top.png"),
           },
         ],
         Eternal: [
           {
             ied: 5,
-            imageSrc: "../images/Eternal Mage Robe.png",
+            imageSrc: require("../images/Eternal Mage Robe.png"),
           },
         ],
       },
       {
         id: 3,
         desc: "Bottom",
-        imageSrc: "../images/No Bottom.png",
+        imageSrc: require("../images/No Bottom.png"),
         imageDesc: "Bottom",
         selected: "None",
         value: ["None", "Fafnir", "Eternal"],
         None: [
           {
             ied: 0,
-            imageSrc: "../images/No Bottom.png",
+            imageSrc: require("../images/No Bottom.png"),
           },
         ],
         Fafnir: [
           {
             ied: 5,
-            imageSrc: "../images/Fafnir Bottom.png",
+            imageSrc: require("../images/Fafnir Bottom.png"),
           },
         ],
         Eternal: [
           {
             ied: 5,
-            imageSrc: "../images/Eternal Mage Pants.png",
+            imageSrc: require("../images/Eternal Mage Pants.png"),
           },
         ],
       },
       {
         id: 4,
         desc: "Weapon",
-        imageSrc: "../images/No Weapon.png",
+        imageSrc: require("../images/No Weapon.png"),
         imageDesc: "Weapon",
         selected: "None",
         value: ["None", "Fafnir", "Absolabs", "Arcaneshade", "Genesis"],
@@ -365,186 +365,186 @@ class Counters extends Component {
           {
             ied: 0,
             boss: 0,
-            imageSrc: "../images/No Weapon.png",
+            imageSrc: require("../images/No Weapon.png"),
           },
         ],
         Fafnir: [
           {
             ied: 10,
             boss: 30,
-            imageSrc: "../images/Fafnir Weapon.png",
+            imageSrc: require("../images/Fafnir Weapon.png"),
           },
         ],
         Absolabs: [
           {
             ied: 10,
             boss: 30,
-            imageSrc: "../images/Absolabs Weapon.png",
+            imageSrc: require("../images/Absolabs Weapon.png"),
           },
         ],
         Arcaneshade: [
           {
             ied: 20,
             boss: 30,
-            imageSrc: "../images/Arcaneshade Weapon.png",
+            imageSrc: require("../images/Arcaneshade Weapon.png"),
           },
         ],
         Genesis: [
           {
             ied: 20,
             boss: 30,
-            imageSrc: "../images/Genesis Fan.png",
+            imageSrc: require("../images/Genesis Fan.png"),
           },
         ],
       },
       {
         id: 5,
         desc: "Glove",
-        imageSrc: "../images/No Glove.png",
+        imageSrc: require("../images/No Glove.png"),
         imageDesc: "Glove",
         selected: ["None"],
         value: ["None", "Absolabs", "Arcaneshade"],
         None: [
           {
             ied: 0,
-            imageSrc: "../images/No Glove.png",
+            imageSrc: require("../images/No Glove.png"),
           },
         ],
         Absolabs: [
           {
             ied: 0,
-            imageSrc: "../images/Absolabs Glove.png",
+            imageSrc: require("../images/Absolabs Glove.png"),
           },
         ],
         Arcaneshade: [
           {
             ied: 0,
-            imageSrc: "../images/Arcaneshade Mitts.png",
+            imageSrc: require("../images/Arcaneshade Mitts.png"),
           },
         ],
       },
       {
         id: 6,
         desc: "Cape",
-        imageSrc: "../images/No Cape.png",
+        imageSrc: require("../images/No Cape.png"),
         imageDesc: "Cape",
         selected: "None",
         value: ["None", "Absolabs", "Arcaneshade"],
         None: [
           {
             ied: 0,
-            imageSrc: "../images/No Cape.png",
+            imageSrc: require("../images/No Cape.png"),
           },
         ],
         Absolabs: [
           {
             ied: 0,
-            imageSrc: "../images/Absolabs Cape.png",
+            imageSrc: require("../images/Absolabs Cape.png"),
           },
         ],
         Arcaneshade: [
           {
             ied: 0,
-            imageSrc: "../images/Arcaneshade Cape.png",
+            imageSrc: require("../images/Arcaneshade Cape.png"),
           },
         ],
       },
       {
         id: 7,
         desc: "Shoe",
-        imageSrc: "../images/No Shoe.png",
+        imageSrc: require("../images/No Shoe.png"),
         imageDesc: "Shoe",
         selected: "None",
         value: ["None", "Absolabs", "Arcaneshade"],
         None: [
           {
             ied: 0,
-            imageSrc: "../images/No Shoe.png",
+            imageSrc: require("../images/No Shoe.png"),
           },
         ],
         Absolabs: [
           {
             ied: 0,
-            imageSrc: "../images/Absolabs Shoe.png",
+            imageSrc: require("../images/Absolabs Shoe.png"),
           },
         ],
         Arcaneshade: [
           {
             ied: 0,
-            imageSrc: "../images/Arcaneshade Shoe.png",
+            imageSrc: require("../images/Arcaneshade Shoe.png"),
           },
         ],
       },
       {
         id: 8,
         desc: "Shoulder",
-        imageSrc: "../images/No Shoulder.png",
+        imageSrc: require("../images/No Shoulder.png"),
         imageDesc: "Shoulder",
         selected: "None",
         value: ["None", "Absolabs", "Arcaneshade"],
         None: [
           {
             ied: 0,
-            imageSrc: "../images/No Shoulder.png",
+            imageSrc: require("../images/No Shoulder.png"),
           },
         ],
         Absolabs: [
           {
             ied: 0,
-            imageSrc: "../images/Absolabs Shoulder.png",
+            imageSrc: require("../images/Absolabs Shoulder.png"),
           },
         ],
         Arcaneshade: [
           {
             ied: 0,
-            imageSrc: "../images/Arcaneshade Shoulder.png",
+            imageSrc: require("../images/Arcaneshade Shoulder.png"),
           },
         ],
       },
       {
         id: 9,
         desc: "Medal",
-        imageSrc: "../images/No Medal.png",
+        imageSrc: require("../images/No Medal.png"),
         imageDesc: "Medal",
         selected: "None",
         value: ["None", "Monster park"],
         None: [
           {
             ied: 0,
-            imageSrc: "../images/No Medal.png",
+            imageSrc: require("../images/No Medal.png"),
           },
         ],
         Monster: [
           {
             ied: 10,
-            imageSrc: "../images/Seven-day Monster Parker.png",
+            imageSrc: require("../images/Seven-day Monster Parker.png"),
           },
         ],
       },
       {
         id: 10,
         desc: "Badge",
-        imageSrc: "../images/No Badge.png",
+        imageSrc: require("../images/No Badge.png"),
         imageDesc: "Badge",
         selected: "None",
         value: ["None", "Monster park"],
         None: [
           {
             ied: 0,
-            imageSrc: "../images/No Badge.png",
+            imageSrc: require("../images/No Badge.png"),
           },
         ],
         Monster: [
           {
             ied: 10,
-            imageSrc: "../images/Seven-day Badge.png",
+            imageSrc: require("../images/Seven-day Badge.png"),
           },
         ],
       },
       {
         id: 11,
         desc: "Heart",
-        imageSrc: "../images/No Heart.png",
+        imageSrc: require("../images/No Heart.png"),
         imageDesc: "Heart",
         selected: "None",
         value: ["None", "Black Heart"],
@@ -552,14 +552,14 @@ class Counters extends Component {
           {
             ied: 0,
             boss: 0,
-            imageSrc: "../images/No Heart.png",
+            imageSrc: require("../images/No Heart.png"),
           },
         ],
         Heart: [
           {
             ied: 30,
             boss: 30,
-            imageSrc: "../images/Black Heart.png",
+            imageSrc: require("../images/Black Heart.png"),
           },
         ],
       },
@@ -568,7 +568,7 @@ class Counters extends Component {
       {
         id: 1,
         desc: "Boss damage +15%",
-        imageSrc: "../images/Fury Unleashed.png",
+        imageSrc: require("../images/Fury Unleashed.png"),
         imageDesc: "Fury Unleashed",
         checked: false,
         boss: 15,
@@ -578,7 +578,7 @@ class Counters extends Component {
       {
         id: 2,
         desc: "Damage +10%",
-        imageSrc: "../images/Wild Rage.png",
+        imageSrc: require("../images/Wild Rage.png"),
         imageDesc: "Wild Rage",
         checked: false,
         boss: 0,
@@ -588,7 +588,7 @@ class Counters extends Component {
       {
         id: 3,
         desc: "Damage +10%",
-        imageSrc: "../images/Elementalism.png",
+        imageSrc: require("../images/Elementalism.png"),
         imageDesc: "Elementalism Rage",
         checked: false,
         boss: 0,
@@ -598,7 +598,7 @@ class Counters extends Component {
       {
         id: 4,
         desc: "Damage +9%, IED + 9%",
-        imageSrc: "../images/Magician's Erudition.png",
+        imageSrc: require("../images/Magician's Erudition.png"),
         imageDesc: "Magician's Erudition",
         checked: false,
         boss: 0,
@@ -608,7 +608,7 @@ class Counters extends Component {
       {
         id: 5,
         desc: "Damage +11%",
-        imageSrc: "../images/Ecstasy.png",
+        imageSrc: require("../images/Ecstasy.png"),
         imageDesc: "Ecstasy",
         checked: false,
         boss: 0,
@@ -618,7 +618,7 @@ class Counters extends Component {
       {
         id: 6,
         desc: "Damage +6% / 12%",
-        imageSrc: "../images/Intensive Insult.png",
+        imageSrc: require("../images/Intensive Insult.png"),
         imageDesc: "Intensive Insult",
         checked: false,
         boss: 0,
@@ -628,7 +628,7 @@ class Counters extends Component {
       {
         id: 7,
         desc: "Damage +17%",
-        imageSrc: "../images/Prior Preperation.png",
+        imageSrc: require("../images/Prior Preperation.png"),
         imageDesc: "Prior Preperation",
         checked: false,
         boss: 0,
@@ -638,7 +638,7 @@ class Counters extends Component {
       {
         id: 8,
         desc: "Damage +45%",
-        imageSrc: "../images/Terms and Conditions.png",
+        imageSrc: require("../images/Terms and Conditions.png"),
         imageDesc: "Terms and Conditions",
         checked: false,
         boss: 0,
@@ -648,7 +648,7 @@ class Counters extends Component {
       {
         id: 9,
         desc: "Damage +18%",
-        imageSrc: "../images/Thieves' Cunning.png",
+        imageSrc: require("../images/Thieves' Cunning.png"),
         imageDesc: "Thieves' Cunning",
         checked: false,
         boss: 0,
@@ -658,7 +658,7 @@ class Counters extends Component {
       {
         id: 10,
         desc: "Damage +8%, Boss damage + 4%",
-        imageSrc: "../images/Noblesse.png",
+        imageSrc: require("../images/Noblesse.png"),
         imageDesc: "Noblesse",
         checked: false,
         boss: 4,
@@ -668,7 +668,7 @@ class Counters extends Component {
       {
         id: 11,
         desc: "Damage +12%",
-        imageSrc: "../images/Flow of Battle.png",
+        imageSrc: require("../images/Flow of Battle.png"),
         imageDesc: "Flow of Battle",
         checked: false,
         boss: 0,
@@ -678,7 +678,7 @@ class Counters extends Component {
       {
         id: 12,
         desc: "Ied +30%",
-        imageSrc: "../images/Flow of Battle.png",
+        imageSrc: require("../images/Flow of Battle.png"),
         imageDesc: "Flow of Battle",
         checked: false,
         boss: 0,
@@ -688,7 +688,7 @@ class Counters extends Component {
       {
         id: 13,
         desc: "Ied +33%",
-        imageSrc: "../images/Flow of Battle.png",
+        imageSrc: require("../images/Flow of Battle.png"),
         imageDesc: "Flow of Battle",
         checked: false,
         boss: 0,
@@ -698,7 +698,7 @@ class Counters extends Component {
       {
         id: 14,
         desc: "Damage +30%",
-        imageSrc: "../images/Flow of Battle.png",
+        imageSrc: require("../images/Flow of Battle.png"),
         imageDesc: "Flow of Battle",
         checked: false,
         boss: 0,
@@ -710,7 +710,7 @@ class Counters extends Component {
       {
         id: 1,
         desc: "Weapon",
-        imageSrc: "../images/Genesis Two-handed Axe.png",
+        imageSrc: require("../images/Genesis Two-handed Axe.png"),
         imageDesc: "Weapon",
         selected: ["0", "0", "0"],
         type: "wseMain",
@@ -777,7 +777,7 @@ class Counters extends Component {
       {
         id: 2,
         desc: "Secondary",
-        imageSrc: "../images/Secondary.png",
+        imageSrc: require("../images/Secondary.png"),
         imageDesc: "Secondary",
         selected: ["0", "0", "0"],
         type: "wseMain",
@@ -844,7 +844,7 @@ class Counters extends Component {
       {
         id: 3,
         desc: "Emblem",
-        imageSrc: "../images/Mithra's Rage.png",
+        imageSrc: require("../images/Mithra's Rage.png"),
         imageDesc: "Emblem",
         selected: ["0", "0", "0"],
         type: "wseMain",
@@ -904,7 +904,7 @@ class Counters extends Component {
       {
         id: 1,
         desc: "Weapon",
-        imageSrc: "../images/Genesis Two-handed Axe.png",
+        imageSrc: require("../images/Genesis Two-handed Axe.png"),
         imageDesc: "Weapon",
         selected: ["0", "0", "0"],
         type: "wseAdd",
@@ -960,7 +960,7 @@ class Counters extends Component {
       {
         id: 2,
         desc: "Secondary",
-        imageSrc: "../images/Secondary.png",
+        imageSrc: require("../images/Secondary.png"),
         imageDesc: "Secondary",
         selected: ["0", "0", "0"],
         type: "wseAdd",
@@ -1016,7 +1016,7 @@ class Counters extends Component {
       {
         id: 3,
         desc: "Emblem",
-        imageSrc: "../images/Mithra's Rage.png",
+        imageSrc: require("../images/Mithra's Rage.png"),
         imageDesc: "Emblem",
         selected: ["0", "0", "0"],
         type: "wseAdd",
@@ -1703,7 +1703,7 @@ class Counters extends Component {
 
         <div className="stats_div">
           <img
-            src="../images/stat background2.png"
+            src={require("../images/stat background2.png")}
             alt=""
             title="Stats table"
           />
