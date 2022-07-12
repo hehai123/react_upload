@@ -1619,7 +1619,7 @@ class Counters extends Component {
               Guild Skills
               <img
                 className="icon_image"
-                src="../images/Boss Slayers.png"
+                src={require("../images/Boss Slayers.png")}
                 alt=""
                 title="Guild Skills"
               />
@@ -1634,7 +1634,7 @@ class Counters extends Component {
               Potions
               <img
                 className="icon_image"
-                src="../images/Sparkling Red Star Potion.png"
+                src={require("../images/Sparkling Red Star Potion.png")}
                 alt=""
                 title="Potions"
               />
@@ -1656,7 +1656,7 @@ class Counters extends Component {
               Title
               <img
                 className="icon_image"
-                src="../images/Title.png"
+                src={require("../images/Title.png")}
                 alt=""
                 title="Title"
               />
@@ -1671,7 +1671,7 @@ class Counters extends Component {
               Traits
               <img
                 className="icon_image"
-                src="../images/Premium Hair Wax.png"
+                src={require("../images/Premium Hair Wax.png")}
                 alt=""
                 title="Traits"
               />
