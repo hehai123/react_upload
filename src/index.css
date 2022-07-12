@@ -197,6 +197,14 @@ code {
   font-size: 14px;
 }
 
+.image-label-boss-def {
+  position: absolute;
+  top: 78px;
+  left: 160px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
 .image-label-damage {
   position: absolute;
   top: 60px;

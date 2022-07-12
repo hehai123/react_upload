@@ -6,6 +6,7 @@ import Hyper from "./hyper";
 import Table from "./table";
 import Table2 from "./table2";
 import Table3 from "./table3";
+import EnemyDef from "./enemyDef";
 
 class Counters extends Component {
   state = {
@@ -13,6 +14,9 @@ class Counters extends Component {
     eqSetBoss: { boss: 0, ied: 0 },
     ied: [],
     iedFinal: 0,
+    enemyDef: [
+      { id: 1, desc: "Monster defense", max: 380, value: 0, desc1: "Defense" },
+    ],
     potion: [
       {
         id: 1,
@@ -604,7 +608,7 @@ class Counters extends Component {
       },
       {
         id: 4,
-        desc: "Damage +9%, IED + 9%",
+        desc: "Damage +9%, IED +9%",
         imageSrc: require("../images/Magician's Erudition.png"),
         imageDesc: "Magician's Erudition",
         checked: false,
@@ -616,6 +620,42 @@ class Counters extends Component {
       },
       {
         id: 5,
+        desc: "IED +10%",
+        imageSrc: require("../images/Rhinne's Blessing.png"),
+        imageDesc: "Rhinne's Blessing",
+        checked: false,
+        boss: 0,
+        damage: 0,
+        ied: 10,
+        att: 0,
+        matt: 0,
+      },
+      {
+        id: 6,
+        desc: "IED +10%",
+        imageSrc: require("../images/Confidence.png"),
+        imageDesc: "Confidence",
+        checked: false,
+        boss: 0,
+        damage: 0,
+        ied: 10,
+        att: 0,
+        matt: 0,
+      },
+      {
+        id: 7,
+        desc: "IED +15%",
+        imageSrc: require("../images/Light Wash.png"),
+        imageDesc: "Light Wash",
+        checked: false,
+        boss: 0,
+        damage: 0,
+        ied: 15,
+        att: 0,
+        matt: 0,
+      },
+      {
+        id: 8,
         desc: "Damage +11%",
         imageSrc: require("../images/Ecstasy.png"),
         imageDesc: "Ecstasy",
@@ -627,7 +667,7 @@ class Counters extends Component {
         matt: 0,
       },
       {
-        id: 6,
+        id: 9,
         desc: "Damage +6% / 12%",
         imageSrc: require("../images/Intensive Insult.png"),
         imageDesc: "Intensive Insult",
@@ -639,7 +679,7 @@ class Counters extends Component {
         matt: 0,
       },
       {
-        id: 7,
+        id: 10,
         desc: "Damage +17%",
         imageSrc: require("../images/Prior Preperation.png"),
         imageDesc: "Prior Preperation",
@@ -651,7 +691,7 @@ class Counters extends Component {
         matt: 0,
       },
       {
-        id: 8,
+        id: 11,
         desc: "Damage +45%",
         imageSrc: require("../images/Terms and Conditions.png"),
         imageDesc: "Terms and Conditions",
@@ -663,7 +703,7 @@ class Counters extends Component {
         matt: 0,
       },
       {
-        id: 9,
+        id: 12,
         desc: "Damage +18%",
         imageSrc: require("../images/Thieves' Cunning.png"),
         imageDesc: "Thieves' Cunning",
@@ -675,7 +715,7 @@ class Counters extends Component {
         matt: 0,
       },
       {
-        id: 10,
+        id: 13,
         desc: "Damage +8%, Boss damage + 4%",
         imageSrc: require("../images/Noblesse.png"),
         imageDesc: "Noblesse",
@@ -687,7 +727,7 @@ class Counters extends Component {
         matt: 0,
       },
       {
-        id: 11,
+        id: 14,
         desc: "Damage +12%",
         imageSrc: require("../images/Flow of Battle.png"),
         imageDesc: "Flow of Battle",
@@ -699,7 +739,7 @@ class Counters extends Component {
         matt: 0,
       },
       {
-        id: 12,
+        id: 15,
         desc: "Att +10%, Matt +10%",
         imageSrc: require("../images/Call of the Wild.png"),
         imageDesc: "Call of the Wild",
@@ -711,7 +751,7 @@ class Counters extends Component {
         matt: 10,
       },
       {
-        id: 13,
+        id: 16,
         desc: "Boss damage +10%",
         imageSrc: require("../images/Advanced Blessing.png"),
         imageDesc: "Advanced Blessing",
@@ -723,7 +763,7 @@ class Counters extends Component {
         matt: 0,
       },
       {
-        id: 14,
+        id: 17,
         desc: "Damage +20%, Boss damage +25%",
         imageSrc: require("../images/Bellflower Barrier.png"),
         imageDesc: "Bellflower Barrier",
@@ -1625,14 +1665,21 @@ class Counters extends Component {
     console.log("Eq set effect boss damage and ied: ", this.state.eqSetBoss);
   };
 
+  //Setting enemy Defense
+  handleEnemyDef = (def) => {
+    var inputs = [...this.state.enemyDef];
+    inputs[0].value = this.safeParseFloat(def);
+    this.setState({ inputs });
+  };
+
   iedFinalDmg = () => {
     const ied =
       (100 - this.state.iedFinal) * (this.state.eqSetBoss.ied / 100) +
       this.state.iedFinal;
 
-    const def = 300;
+    const def = this.state.enemyDef[0].value;
     const finalDmg = 100 - def * (1 - ied / 100);
-    return finalDmg.toFixed(2);
+    return finalDmg > 0 ? finalDmg.toFixed(2) : 0;
   };
 
   finalBoss = () => {
@@ -1643,14 +1690,16 @@ class Counters extends Component {
   finalFinal = () => {
     const dmg = this.state.total.damage;
     const boss = this.finalBoss();
+    const att = this.state.total.att;
     const iedFinalDmg = this.iedFinalDmg();
-    const finalFinal = ((dmg + boss + 100) * iedFinalDmg) / 100;
+    const finalFinal =
+      ((dmg + boss + 100) * iedFinalDmg * (att / 100 + 1)) / 100;
     return finalFinal.toFixed(2);
   };
 
+  //To prevent NaN problem
   safeParseFloat = (value) => {
     const value1 = parseFloat(value);
-
     return isNaN(value1) ? 0 : value1;
   };
 
@@ -1713,13 +1762,26 @@ class Counters extends Component {
           ))}
         </div>
 
-        <div className="equip_table">
-          {this.state.equipment.map((eq) => (
-            <Equipment key={eq.id} eq={eq} onSelect={this.handleEquip} />
-          ))}
-          {this.state.bossSet.map((set) => (
-            <BossSet key={set.id} set={set} onSelect={this.handleSet} />
-          ))}
+        <div>
+          <div className="equip_table">
+            {this.state.equipment.map((eq) => (
+              <Equipment key={eq.id} eq={eq} onSelect={this.handleEquip} />
+            ))}
+            {this.state.bossSet.map((set) => (
+              <BossSet key={set.id} set={set} onSelect={this.handleSet} />
+            ))}
+          </div>
+
+          {/* For enemy defense */}
+          <div className="input-field-2">
+            {this.state.enemyDef.map((input) => (
+              <EnemyDef
+                key={input.id} // check this pls
+                input={input}
+                onChange={this.handleEnemyDef}
+              />
+            ))}
+          </div>
         </div>
 
         {/* For additional inputs */}
@@ -1854,6 +1916,9 @@ class Counters extends Component {
           />
           <p className="image-label-boss">{this.finalBoss()}</p>
           <p className="image-label-damage">{this.state.total.damage}</p>
+          <p className="image-label-boss-def">
+            Def %: {this.state.enemyDef[0].value}
+          </p>
           <p className="image-label-ied">
             {(
               (100 - this.state.iedFinal) * (this.state.eqSetBoss.ied / 100) +
@@ -1869,7 +1934,7 @@ class Counters extends Component {
             (BD% + Dmg% + 100%)(IED Final%)/100
           </p>
           <p className="image-label-final">
-            Final dmg % after IED: {this.finalFinal()}
+            Final final %: {this.finalFinal()}
           </p>
         </div>
       </div>
