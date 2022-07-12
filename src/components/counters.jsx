@@ -5,6 +5,7 @@ import Equipment from "./equipment";
 import Hyper from "./hyper";
 import Table from "./table";
 import Table2 from "./table2";
+import Table3 from "./table3";
 
 class Counters extends Component {
   state = {
@@ -118,7 +119,7 @@ class Counters extends Component {
       },
       {
         id: 2,
-        desc: "Damage1",
+        desc: "Damage",
         max: 40,
         value: 0,
         type: "Damage",
@@ -574,6 +575,8 @@ class Counters extends Component {
         boss: 15,
         damage: 0,
         ied: 0,
+        att: 0,
+        matt: 0,
       },
       {
         id: 2,
@@ -584,6 +587,8 @@ class Counters extends Component {
         boss: 0,
         damage: 10,
         ied: 0,
+        att: 0,
+        matt: 0,
       },
       {
         id: 3,
@@ -594,6 +599,8 @@ class Counters extends Component {
         boss: 0,
         damage: 10,
         ied: 0,
+        att: 0,
+        matt: 0,
       },
       {
         id: 4,
@@ -604,6 +611,8 @@ class Counters extends Component {
         boss: 0,
         damage: 9,
         ied: 9,
+        att: 0,
+        matt: 0,
       },
       {
         id: 5,
@@ -614,6 +623,8 @@ class Counters extends Component {
         boss: 0,
         damage: 11,
         ied: 0,
+        att: 0,
+        matt: 0,
       },
       {
         id: 6,
@@ -624,6 +635,8 @@ class Counters extends Component {
         boss: 0,
         damage: 12,
         ied: 0,
+        att: 0,
+        matt: 0,
       },
       {
         id: 7,
@@ -634,6 +647,8 @@ class Counters extends Component {
         boss: 0,
         damage: 17,
         ied: 0,
+        att: 0,
+        matt: 0,
       },
       {
         id: 8,
@@ -644,6 +659,8 @@ class Counters extends Component {
         boss: 0,
         damage: 45,
         ied: 0,
+        att: 0,
+        matt: 0,
       },
       {
         id: 9,
@@ -654,6 +671,8 @@ class Counters extends Component {
         boss: 0,
         damage: 18,
         ied: 0,
+        att: 0,
+        matt: 0,
       },
       {
         id: 10,
@@ -664,6 +683,8 @@ class Counters extends Component {
         boss: 4,
         damage: 8,
         ied: 0,
+        att: 0,
+        matt: 0,
       },
       {
         id: 11,
@@ -674,36 +695,44 @@ class Counters extends Component {
         boss: 0,
         damage: 12,
         ied: 0,
+        att: 0,
+        matt: 0,
       },
       {
         id: 12,
-        desc: "Ied +30%",
-        imageSrc: require("../images/Flow of Battle.png"),
-        imageDesc: "Flow of Battle",
+        desc: "Att +10%, Matt +10%",
+        imageSrc: require("../images/Call of the Wild.png"),
+        imageDesc: "Call of the Wild",
         checked: false,
         boss: 0,
         damage: 0,
-        ied: 30,
+        ied: 0,
+        att: 10,
+        matt: 10,
       },
       {
         id: 13,
-        desc: "Ied +33%",
-        imageSrc: require("../images/Flow of Battle.png"),
-        imageDesc: "Flow of Battle",
+        desc: "Boss damage +10%",
+        imageSrc: require("../images/Advanced Blessing.png"),
+        imageDesc: "Advanced Blessing",
         checked: false,
-        boss: 0,
+        boss: 10,
         damage: 0,
-        ied: 33,
+        ied: 0,
+        att: 0,
+        matt: 0,
       },
       {
         id: 14,
-        desc: "Damage +30%",
-        imageSrc: require("../images/Flow of Battle.png"),
-        imageDesc: "Flow of Battle",
+        desc: "Damage +20%, Boss damage +25%",
+        imageSrc: require("../images/Bellflower Barrier.png"),
+        imageDesc: "Bellflower Barrier",
         checked: false,
-        boss: 0,
-        damage: 30,
+        boss: 25,
+        damage: 20,
         ied: 0,
+        att: 0,
+        matt: 0,
       },
     ],
     wseMain: [
@@ -1059,16 +1088,53 @@ class Counters extends Component {
         ],
       },
     ],
+    additionalWaMa: [
+      {
+        id: 1,
+        desc: "Additional Att/Matt lines",
+        selected: "Wa",
+        option: ["Wa", "Matt"],
+        field: [
+          { id: 1, value: 0, desc: "Line 1", max: 100 },
+          { id: 2, value: 0, desc: "Line 2", max: 100 },
+          { id: 3, value: 0, desc: "Line 3", max: 100 },
+          { id: 4, value: 0, desc: "Line 4", max: 100 },
+          { id: 5, value: 0, desc: "Line 5", max: 100 },
+        ],
+      },
+    ],
     iedFill: [
       {
         id: 1,
         desc: "Additional IED lines",
         field: [
-          { id: 1, value: 0, desc: "Additional IED 1" },
-          { id: 2, value: 0, desc: "Additional IED 2" },
-          { id: 3, value: 0, desc: "Additional IED 3" },
-          { id: 4, value: 0, desc: "Additional IED 4" },
-          { id: 5, value: 0, desc: "Additional IED 5" },
+          { id: 1, value: 0, desc: "Line 1", max: 100 },
+          { id: 2, value: 0, desc: "Line 2", max: 100 },
+          { id: 3, value: 0, desc: "Line 3", max: 100 },
+          { id: 4, value: 0, desc: "Line 4", max: 100 },
+          { id: 5, value: 0, desc: "Line 5", max: 100 },
+        ],
+      },
+      {
+        id: 2,
+        desc: "Additional Boss Damage lines",
+        field: [
+          { id: 1, value: 0, desc: "Line 1", max: 100 },
+          { id: 2, value: 0, desc: "Line 2", max: 100 },
+          { id: 3, value: 0, desc: "Line 3", max: 100 },
+          { id: 4, value: 0, desc: "Line 4", max: 100 },
+          { id: 5, value: 0, desc: "Line 5", max: 100 },
+        ],
+      },
+      {
+        id: 3,
+        desc: "Additional Damage lines",
+        field: [
+          { id: 1, value: 0, desc: "Line 1", max: 100 },
+          { id: 2, value: 0, desc: "Line 2", max: 100 },
+          { id: 3, value: 0, desc: "Line 3", max: 100 },
+          { id: 4, value: 0, desc: "Line 4", max: 100 },
+          { id: 5, value: 0, desc: "Line 5", max: 100 },
         ],
       },
     ],
@@ -1122,6 +1188,8 @@ class Counters extends Component {
     const boss_value = skills[index].boss;
     const damage_value = skills[index].damage;
     const ied_value = skills[index].ied;
+    const att_value = skills[index].att;
+    const matt_value = skills[index].matt;
 
     const ieds = [...this.state.ied];
 
@@ -1132,6 +1200,8 @@ class Counters extends Component {
       skills[index].checked = true;
       totals.boss += boss_value;
       totals.damage += damage_value;
+      totals.att += att_value;
+      totals.matt += matt_value;
       if (ied_value !== 0) {
         ieds.push(ied_value);
         this.setState({ ied: ieds });
@@ -1141,6 +1211,8 @@ class Counters extends Component {
       skills[index].checked = false;
       totals.boss -= boss_value;
       totals.damage -= damage_value;
+      totals.att -= att_value;
+      totals.matt -= matt_value;
       if (ied_value !== 0) {
         const iedIndex = ieds.indexOf(ied_value);
         if (ieds !== -1) {
@@ -1232,6 +1304,30 @@ class Counters extends Component {
 
     this.iedCalculator(ieds);
     this.setState({ ied: ieds });
+  };
+
+  //Two in 1 function
+  handleBoss = (old_boss, new_boss) => {
+    const inputs = this.state.total;
+    inputs.boss -= old_boss;
+    inputs.boss += new_boss;
+    this.setState({ inputs });
+  };
+
+  //Two in 1 function
+  handleDmg = (old_dmg, new_dmg) => {
+    const inputs = this.state.total;
+    inputs.damage -= old_dmg;
+    inputs.damage += new_dmg;
+    this.setState({ inputs });
+  };
+
+  //Two in 1 function
+  handleAtt = (old_att, new_att) => {
+    const inputs = this.state.total;
+    inputs.att -= old_att;
+    inputs.att += new_att;
+    this.setState({ inputs });
   };
 
   addBoss = (value) => {
@@ -1552,18 +1648,55 @@ class Counters extends Component {
     return finalFinal.toFixed(2);
   };
 
-  handleInputField = (value, option) => {
+  safeParseFloat = (value) => {
+    const value1 = parseFloat(value);
+
+    return isNaN(value1) ? 0 : value1;
+  };
+
+  handleInputField = (value, option, option_main) => {
     const inputs = [...this.state.iedFill];
+    const index_main = inputs.indexOf(option_main);
+    const index = inputs[index_main].field.indexOf(option);
+
+    const old_value = inputs[index_main].field[index].value;
+
+    const new_value = parseInt(this.safeParseFloat(value));
+
+    //0 for ied, 1 for bd, 2 for dmg
+    switch (index_main) {
+      case 0:
+        this.handleIedArray(old_value, new_value);
+        break;
+      case 1:
+        this.handleBoss(old_value, new_value);
+        break;
+      case 2:
+        this.handleDmg(old_value, new_value);
+        break;
+      case 3:
+        this.handleAtt(old_value, new_value);
+        break;
+      default:
+        break;
+    }
+
+    inputs[index_main].field[index].value = new_value;
+    this.setState({ inputs });
+    console.log(this.state.iedFill);
+  };
+
+  handleInputFieldAtt = (value, option) => {
+    const inputs = [...this.state.additionalWaMa];
     const index = inputs[0].field.indexOf(option);
 
     const old_value = inputs[0].field[index].value;
-    const new_value = parseInt(value);
 
-    this.handleIedArray(old_value, new_value);
+    const new_value = parseInt(this.safeParseFloat(value));
+    this.handleAtt(old_value, new_value);
 
     inputs[0].field[index].value = new_value;
     this.setState({ inputs });
-    console.log(this.state.iedFill);
   };
 
   render() {
@@ -1580,16 +1713,6 @@ class Counters extends Component {
           ))}
         </div>
 
-        <div className="input-field-2">
-          {this.state.iedFill.map((input) => (
-            <Table2
-              key={input.id} // check this pls
-              input={input}
-              onChange={this.handleInputField}
-            />
-          ))}
-        </div>
-
         <div className="equip_table">
           {this.state.equipment.map((eq) => (
             <Equipment key={eq.id} eq={eq} onSelect={this.handleEquip} />
@@ -1597,6 +1720,28 @@ class Counters extends Component {
           {this.state.bossSet.map((set) => (
             <BossSet key={set.id} set={set} onSelect={this.handleSet} />
           ))}
+        </div>
+
+        {/* For additional inputs */}
+        <div className="table-sub">
+          <div className="input-field-2">
+            {this.state.iedFill.map((input) => (
+              <Table2
+                key={input.id} // check this pls
+                input={input}
+                onChange={this.handleInputField}
+              />
+            ))}
+          </div>
+          <div className="input-field-2">
+            {this.state.additionalWaMa.map((input) => (
+              <Table3
+                key={input.id} // check this pls
+                input={input}
+                onChange={this.handleInputFieldAtt}
+              />
+            ))}
+          </div>
         </div>
 
         <div className="input_main_table">

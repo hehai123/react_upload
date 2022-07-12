@@ -11,7 +11,9 @@ class Table2 extends Component {
             <Input
               key={input.id}
               input={input}
-              onChange={this.props.onChange}
+              onChange={(value, option) =>
+                this.props.onChange(value, option, this.props.input)
+              }
             />
           ))}
         </div>
