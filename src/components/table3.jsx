@@ -17,11 +17,7 @@ class Table3 extends Component {
             </div>
           </div>
           {this.props.input.field.map((input) => (
-            <Input
-              key={input.id}
-              input={input}
-              onChange={this.props.onChange}
-            />
+            <Input key={input.id} input={input} onInput={this.props.onInput} />
           ))}
         </div>
       </div>

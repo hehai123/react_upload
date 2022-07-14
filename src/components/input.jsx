@@ -10,10 +10,8 @@ class Input extends Component {
           type="Number"
           min={0}
           max={this.props.input.max}
-          value={this.props.input.value}
-          onChange={(e) =>
-            this.props.onChange(e.target.value, this.props.input)
-          }
+          defaultValue={this.props.input.value}
+          onInput={(e) => this.props.onInput(e.target.value, this.props.input)}
         />
       </div>
     );

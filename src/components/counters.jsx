@@ -7,6 +7,8 @@ import Table from "./table";
 import Table2 from "./table2";
 import Table3 from "./table3";
 import EnemyDef from "./enemyDef";
+import TableMain from "./tableMain";
+import TableTest from "./tableTest";
 
 class Counters extends Component {
   state = {
@@ -86,7 +88,7 @@ class Counters extends Component {
     inner: [
       {
         id: 1,
-        desc: "Inner Ability",
+        desc: "Boss Damage",
         max: 20,
         value: 0,
         type: "Boss",
@@ -142,13 +144,29 @@ class Counters extends Component {
       {
         id: 1,
         desc: "Boss Damage",
-        max: 60,
+        max: 40,
         value: 0,
         type: "Boss",
         name: "union",
       },
       {
         id: 2,
+        desc: "Boss (DA)",
+        max: 6,
+        value: 0,
+        type: "Boss",
+        name: "union",
+      },
+      {
+        id: 3,
+        desc: "Boss (Kanna)",
+        max: 6,
+        value: 0,
+        type: "Boss",
+        name: "union",
+      },
+      {
+        id: 4,
         desc: "Ied",
         max: 40,
         value: 0,
@@ -156,7 +174,7 @@ class Counters extends Component {
         name: "union",
       },
       {
-        id: 3,
+        id: 5,
         desc: "Ied (Blaster)",
         max: 6,
         value: 0,
@@ -740,7 +758,7 @@ class Counters extends Component {
       },
       {
         id: 15,
-        desc: "Att +10%, Matt +10%",
+        desc: "Att/Matt +10%",
         imageSrc: require("../images/Call of the Wild.png"),
         imageDesc: "Call of the Wild",
         checked: false,
@@ -775,6 +793,56 @@ class Counters extends Component {
         matt: 0,
       },
     ],
+    augSoul: [
+      {
+        id: 1,
+        desc: "Augmented Soul",
+        imageSrc: require("../images/Augmented Soul.png"),
+        imageDesc: "Augmented Soul",
+        selected: "Others",
+        test: [
+          {
+            id: 1,
+            lineDesc: "Select Soul Stats",
+            value: [
+              "Others",
+              "3% Att",
+              "3% Matt",
+              "7% Boss",
+              "5% Boss",
+              "4% Boss",
+              "3% Boss",
+              "7% Ied",
+              "5% Ied",
+              "4% Ied",
+              "3% Ied",
+            ],
+          },
+        ],
+      },
+    ],
+    weaponFlame: [
+      {
+        id: 1,
+        desc: "Weapon Flame",
+        imageSrc: require("../images/Resurrection Flame.png"),
+        imageDesc: "Resurrection Flame",
+        test: [
+          {
+            id: 1,
+            desc: "Boss Damage",
+            value: 0,
+            max: 14,
+          },
+          {
+            id: 2,
+            desc: "Damage",
+            value: 0,
+            max: 7,
+          },
+        ],
+      },
+    ],
     wseMain: [
       {
         id: 1,
@@ -785,60 +853,84 @@ class Counters extends Component {
         type: "wseMain",
         test: [
           {
-            line: 1,
+            id: 1,
             lineDesc: "1st line",
             value: [
               "Others",
               "12% Att",
               "9% Att",
+              "6% Att",
+              "3% Att",
               "12% Matt",
               "9% Matt",
+              "6% Matt",
+              "3% Matt",
               "40% Boss",
               "35% Boss",
               "30% Boss",
+              "20% Boss",
               "40% Ied",
               "35% Ied",
               "30% Ied",
+              "15% Ied",
               "12% Damage",
               "9% Damage",
+              "6% Damage",
+              "3% Damage",
             ],
           },
           {
-            line: 2,
+            id: 2,
             lineDesc: "2nd line",
             value: [
               "Others",
               "12% Att",
               "9% Att",
+              "6% Att",
+              "3% Att",
               "12% Matt",
               "9% Matt",
+              "6% Matt",
+              "3% Matt",
               "40% Boss",
               "35% Boss",
               "30% Boss",
+              "20% Boss",
               "40% Ied",
               "35% Ied",
               "30% Ied",
+              "15% Ied",
               "12% Damage",
               "9% Damage",
+              "6% Damage",
+              "3% Damage",
             ],
           },
           {
-            line: 3,
+            id: 3,
             lineDesc: "3rd line",
             value: [
               "Others",
               "12% Att",
               "9% Att",
+              "6% Att",
+              "3% Att",
               "12% Matt",
               "9% Matt",
+              "6% Matt",
+              "3% Matt",
               "40% Boss",
               "35% Boss",
               "30% Boss",
+              "20% Boss",
               "40% Ied",
               "35% Ied",
               "30% Ied",
+              "15% Ied",
               "12% Damage",
               "9% Damage",
+              "6% Damage",
+              "3% Damage",
             ],
           },
         ],
@@ -852,60 +944,84 @@ class Counters extends Component {
         type: "wseMain",
         test: [
           {
-            line: 1,
+            id: 1,
             lineDesc: "1st line",
             value: [
               "Others",
               "12% Att",
               "9% Att",
+              "6% Att",
+              "3% Att",
               "12% Matt",
               "9% Matt",
+              "6% Matt",
+              "3% Matt",
               "40% Boss",
               "35% Boss",
               "30% Boss",
+              "20% Boss",
               "40% Ied",
               "35% Ied",
               "30% Ied",
+              "15% Ied",
               "12% Damage",
               "9% Damage",
+              "6% Damage",
+              "3% Damage",
             ],
           },
           {
-            line: 2,
+            id: 2,
             lineDesc: "2nd line",
             value: [
               "Others",
               "12% Att",
               "9% Att",
+              "6% Att",
+              "3% Att",
               "12% Matt",
               "9% Matt",
+              "6% Matt",
+              "3% Matt",
               "40% Boss",
               "35% Boss",
               "30% Boss",
+              "20% Boss",
               "40% Ied",
               "35% Ied",
               "30% Ied",
+              "15% Ied",
               "12% Damage",
               "9% Damage",
+              "6% Damage",
+              "3% Damage",
             ],
           },
           {
-            line: 3,
+            id: 3,
             lineDesc: "3rd line",
             value: [
               "Others",
               "12% Att",
               "9% Att",
+              "6% Att",
+              "3% Att",
               "12% Matt",
               "9% Matt",
+              "6% Matt",
+              "3% Matt",
               "40% Boss",
               "35% Boss",
               "30% Boss",
+              "20% Boss",
               "40% Ied",
               "35% Ied",
               "30% Ied",
+              "15% Ied",
               "12% Damage",
               "9% Damage",
+              "6% Damage",
+              "3% Damage",
             ],
           },
         ],
@@ -919,51 +1035,72 @@ class Counters extends Component {
         type: "wseMain",
         test: [
           {
-            line: 1,
+            id: 1,
             lineDesc: "1st line",
             value: [
               "Others",
               "12% Att",
               "9% Att",
+              "6% Att",
+              "3% Att",
               "12% Matt",
               "9% Matt",
+              "6% Matt",
+              "3% Matt",
               "40% Ied",
               "35% Ied",
               "30% Ied",
+              "15% Ied",
               "12% Damage",
               "9% Damage",
+              "6% Damage",
+              "3% Damage",
             ],
           },
           {
-            line: 2,
+            id: 2,
             lineDesc: "2nd line",
             value: [
               "Others",
               "12% Att",
               "9% Att",
+              "6% Att",
+              "3% Att",
               "12% Matt",
               "9% Matt",
+              "6% Matt",
+              "3% Matt",
               "40% Ied",
               "35% Ied",
               "30% Ied",
+              "15% Ied",
               "12% Damage",
               "9% Damage",
+              "6% Damage",
+              "3% Damage",
             ],
           },
           {
-            line: 3,
+            id: 3,
             lineDesc: "3rd line",
             value: [
               "Others",
               "12% Att",
               "9% Att",
+              "6% Att",
+              "3% Att",
               "12% Matt",
               "9% Matt",
+              "6% Matt",
+              "3% Matt",
               "40% Ied",
               "35% Ied",
               "30% Ied",
+              "15% Ied",
               "12% Damage",
               "9% Damage",
+              "6% Damage",
+              "3% Damage",
             ],
           },
         ],
@@ -979,49 +1116,75 @@ class Counters extends Component {
         type: "wseAdd",
         test: [
           {
-            line: 1,
+            id: 1,
             lineDesc: "1st line",
             value: [
               "Others",
               "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
               "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
               "18% Boss",
+              "12% Boss",
               "5% Ied",
+              "4% Ied",
+              "3% Ied",
               "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
             ],
           },
           {
-            line: 2,
+            id: 2,
             lineDesc: "2nd line",
             value: [
               "Others",
               "12% Att",
               "9% Att",
+              "6% Att",
+              "3% Att",
               "12% Matt",
               "9% Matt",
+              "6% Matt",
+              "3% Matt",
               "18% Boss",
               "12% Boss",
               "5% Ied",
               "4% Ied",
+              "3% Ied",
               "12% Damage",
               "9% Damage",
+              "6% Damage",
+              "3% Damage",
             ],
           },
           {
-            line: 3,
+            id: 3,
             lineDesc: "3rd line",
             value: [
               "Others",
               "12% Att",
               "9% Att",
+              "6% Att",
+              "3% Att",
               "12% Matt",
               "9% Matt",
+              "6% Matt",
+              "3% Matt",
               "18% Boss",
               "12% Boss",
               "5% Ied",
               "4% Ied",
+              "3% Ied",
               "12% Damage",
               "9% Damage",
+              "6% Damage",
+              "3% Damage",
             ],
           },
         ],
@@ -1035,49 +1198,75 @@ class Counters extends Component {
         type: "wseAdd",
         test: [
           {
-            line: 1,
+            id: 1,
             lineDesc: "1st line",
             value: [
               "Others",
               "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
               "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
               "18% Boss",
+              "12% Boss",
               "5% Ied",
+              "4% Ied",
+              "3% Ied",
               "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
             ],
           },
           {
-            line: 2,
+            id: 2,
             lineDesc: "2nd line",
             value: [
               "Others",
               "12% Att",
               "9% Att",
+              "6% Att",
+              "3% Att",
               "12% Matt",
               "9% Matt",
+              "6% Matt",
+              "3% Matt",
               "18% Boss",
               "12% Boss",
               "5% Ied",
               "4% Ied",
+              "3% Ied",
               "12% Damage",
               "9% Damage",
+              "6% Damage",
+              "3% Damage",
             ],
           },
           {
-            line: 3,
+            id: 3,
             lineDesc: "3rd line",
             value: [
               "Others",
               "12% Att",
               "9% Att",
+              "6% Att",
+              "3% Att",
               "12% Matt",
               "9% Matt",
+              "6% Matt",
+              "3% Matt",
               "18% Boss",
               "12% Boss",
               "5% Ied",
               "4% Ied",
+              "3% Ied",
               "12% Damage",
               "9% Damage",
+              "6% Damage",
+              "3% Damage",
             ],
           },
         ],
@@ -1091,38 +1280,69 @@ class Counters extends Component {
         type: "wseAdd",
         test: [
           {
-            line: 1,
+            id: 1,
             lineDesc: "1st line",
-            value: ["Others", "12% Att", "12% Matt", "5% Ied", "12% Damage"],
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "5% Ied",
+              "4% Ied",
+              "3% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
           },
           {
-            line: 2,
+            id: 2,
             lineDesc: "2nd line",
             value: [
               "Others",
               "12% Att",
               "9% Att",
+              "6% Att",
+              "3% Att",
               "12% Matt",
               "9% Matt",
+              "6% Matt",
+              "3% Matt",
               "5% Ied",
               "4% Ied",
+              "3% Ied",
               "12% Damage",
               "9% Damage",
+              "6% Damage",
+              "3% Damage",
             ],
           },
           {
-            line: 3,
+            id: 3,
             lineDesc: "3rd line",
             value: [
               "Others",
               "12% Att",
               "9% Att",
+              "6% Att",
+              "3% Att",
               "12% Matt",
               "9% Matt",
+              "6% Matt",
+              "3% Matt",
               "5% Ied",
               "4% Ied",
+              "3% Ied",
               "12% Damage",
               "9% Damage",
+              "6% Damage",
+              "3% Damage",
             ],
           },
         ],
@@ -1268,73 +1488,59 @@ class Counters extends Component {
     console.log(ieds);
   };
 
+  //For hyper stats etc
   handleInput = (value, input) => {
     const varName = input.name;
     const inputs = [...this.state[varName]];
     const index = inputs.indexOf(input);
     const totals = this.state.total; // sum of all boss, dmg ,att etc
     const max = inputs[index].max;
+    var new_value = this.safeParseFloat(value);
 
-    if (value > max) {
-      value = max;
+    if (new_value > max) {
+      new_value = max;
     }
 
-    if (inputs[index].type === "Ied") {
-      const oldIed = inputs[index].value;
-      const ieds = [...this.state.ied];
-      if (oldIed !== 0) {
-        const iedIndex = ieds.indexOf(oldIed);
-        ieds.splice(iedIndex, 1);
-      }
-      if (value !== 0) {
-        ieds.push(value);
-      }
-
-      this.setState({ ied: ieds });
-      this.iedCalculator(ieds);
-    } else if (inputs[index].type === "Boss") {
-      const oldBoss = inputs[index].value;
-      if (oldBoss !== 0) {
-        totals.boss -= oldBoss;
-      }
-      if (value !== 0) {
-        totals.boss += value;
-      }
-      this.setState({ totals });
-    } else if (inputs[index].type === "Damage") {
-      const oldDmg = inputs[index].value;
-      if (oldDmg !== 0) {
-        totals.damage -= oldDmg;
-      }
-      if (value !== 0) {
-        totals.damage += value;
-      }
-      this.setState({ totals });
+    switch (inputs[index].type) {
+      case "Ied":
+        const oldIed = inputs[index].value;
+        const ieds = [...this.state.ied];
+        if (oldIed !== 0) {
+          const iedIndex = ieds.indexOf(oldIed);
+          ieds.splice(iedIndex, 1);
+        }
+        if (new_value !== 0) {
+          ieds.push(new_value);
+        }
+        this.setState({ ied: ieds });
+        this.iedCalculator(ieds);
+        break;
+      case "Boss":
+        const oldBoss = inputs[index].value;
+        if (oldBoss !== 0) {
+          totals.boss -= oldBoss;
+        }
+        if (new_value !== 0) {
+          totals.boss += new_value;
+        }
+        this.setState({ totals });
+        break;
+      case "Damage":
+        const oldDmg = inputs[index].value;
+        if (oldDmg !== 0) {
+          totals.damage -= oldDmg;
+        }
+        if (new_value !== 0) {
+          totals.damage += new_value;
+        }
+        this.setState({ totals });
+        break;
+      default:
+        break;
     }
-    inputs[index].value = value;
+
+    inputs[index].value = new_value;
     this.setState({ inputs }); // what is going on here
-  };
-
-  //remove this function
-  addIed = (value) => {
-    const ieds = [...this.state.ied];
-    if (value !== 0) ieds.push(value);
-
-    this.iedCalculator(ieds);
-
-    this.setState({ ied: ieds });
-  };
-
-  //remove this function
-  removeIed = (value) => {
-    const ieds = [...this.state.ied];
-    if (value !== 0) ieds.splice(ieds.indexOf(value), 1);
-
-    console.log("Test", ieds);
-
-    this.iedCalculator(ieds);
-
-    this.setState({ ied: ieds });
   };
 
   handleIedArray = (old_ied, new_ied) => {
@@ -1616,7 +1822,7 @@ class Counters extends Component {
     //Set weapon boss damage
     //Hard coded for now
     if (index === 3) {
-      console.log(typeof selectedOld, typeof e_value);
+      console.log(selectedOld, typeof e_value);
       if (selectedOld === "None") totals.boss += 30;
       if (e_value === "None") totals.boss -= 30;
     }
@@ -1748,6 +1954,82 @@ class Counters extends Component {
     this.setState({ inputs });
   };
 
+  handleAugSoul = (selected) => {
+    const inputs = [...this.state.augSoul];
+    const ieds = [...this.state.ied];
+    var optionOld = inputs[0].selected; // recording the old selected option
+
+    if (optionOld === "Others") {
+      optionOld = "0";
+    }
+
+    const check_ied = "Ied";
+    const check_boss = "Boss";
+    const check_damage = "Damage";
+    const check_matt = "Matt";
+    const check_att = "Att";
+    var match_old = parseFloat(optionOld.match(/(\d+)/));
+    var match_new = parseFloat(selected.match(/(\d+)/));
+
+    if (optionOld.includes(check_ied)) {
+      ieds.splice(ieds.indexOf(match_old), 1);
+    } else if (optionOld.includes(check_boss)) {
+      this.subBoss(match_old);
+    } else if (optionOld.includes(check_att)) {
+      this.subAtt(match_old);
+    } else if (optionOld.includes(check_matt)) {
+      this.subMatt(match_old);
+    } else if (optionOld.includes(check_damage)) {
+      this.subDamage(match_old);
+    }
+    if (selected.includes(check_ied)) {
+      ieds.push(match_new);
+    } else if (selected.includes(check_boss)) {
+      this.addBoss(match_new);
+    } else if (selected.includes(check_att)) {
+      this.addAtt(match_new);
+    } else if (selected.includes(check_matt)) {
+      this.addMatt(match_new);
+    } else if (selected.includes(check_damage)) {
+      this.addDamage(match_new);
+    }
+
+    inputs[0].selected = selected;
+
+    this.setState({ inputs });
+    this.iedCalculator(ieds);
+    this.setState({ ied: ieds });
+  };
+
+  handleWeaponFlame = (value, option) => {
+    const totals = this.state.total;
+    const inputs = [...this.state.weaponFlame];
+    const index = inputs[0].test.indexOf(option);
+
+    const old_value = inputs[0].test[index].value;
+    var new_value = this.safeParseFloat(value);
+
+    switch (index) {
+      //boss dmg
+      case 0:
+        totals.boss -= old_value;
+        totals.boss += new_value;
+        break;
+      //damage
+      case 1:
+        totals.damage -= old_value;
+        totals.damage += new_value;
+        break;
+      default:
+        break;
+    }
+
+    inputs[0].test[index].value = new_value;
+
+    this.setState({ totals });
+    this.setState({ inputs });
+  };
+
   render() {
     return (
       <div className="table_overall">
@@ -1769,6 +2051,27 @@ class Counters extends Component {
             ))}
             {this.state.bossSet.map((set) => (
               <BossSet key={set.id} set={set} onSelect={this.handleSet} />
+            ))}
+          </div>
+
+          {/* Weapon Flame Stats */}
+
+          {this.state.weaponFlame.map((flame) => (
+            <TableTest
+              key={flame.id} // check this pls
+              main={flame}
+              onChange={this.handleWeaponFlame}
+            />
+          ))}
+
+          {/* For Aug Soul */}
+          <div className="input-field-2">
+            {this.state.augSoul.map((soul) => (
+              <TableMain
+                key={soul.id} // check this pls
+                main={soul}
+                onChange={this.handleAugSoul}
+              />
             ))}
           </div>
 
@@ -1795,12 +2098,12 @@ class Counters extends Component {
               />
             ))}
           </div>
-          <div className="input-field-2">
+          <div>
             {this.state.additionalWaMa.map((input) => (
               <Table3
                 key={input.id} // check this pls
                 input={input}
-                onChange={this.handleInputFieldAtt}
+                onInput={this.handleInputFieldAtt}
               />
             ))}
           </div>
@@ -1896,46 +2199,58 @@ class Counters extends Component {
           </div>
         </div>
 
-        <div className="counters_div">
-          {this.state.wseMain.map((table) => (
-            <Table key={table.id} table={table} onSelect={this.handleOption} />
-          ))}
-        </div>
+        <div className="last-div">
+          <div className="last-div-wse">
+            <div className="counters_div">
+              {this.state.wseMain.map((table) => (
+                <Table
+                  key={table.id}
+                  table={table}
+                  onSelect={this.handleOption}
+                />
+              ))}
+            </div>
 
-        <div className="counters_div">
-          {this.state.wseAdd.map((table) => (
-            <Table key={table.id} table={table} onSelect={this.handleOption} />
-          ))}
-        </div>
+            <div className="counters_div">
+              {this.state.wseAdd.map((table) => (
+                <Table
+                  key={table.id}
+                  table={table}
+                  onSelect={this.handleOption}
+                />
+              ))}
+            </div>
+          </div>
 
-        <div className="stats_div">
-          <img
-            src={require("../images/stat background2.png")}
-            alt=""
-            title="Stats table"
-          />
-          <p className="image-label-boss">{this.finalBoss()}</p>
-          <p className="image-label-damage">{this.state.total.damage}</p>
-          <p className="image-label-boss-def">
-            Def %: {this.state.enemyDef[0].value}
-          </p>
-          <p className="image-label-ied">
-            {(
-              (100 - this.state.iedFinal) * (this.state.eqSetBoss.ied / 100) +
-              this.state.iedFinal
-            ).toFixed(2)}
-          </p>
-          <p className="image-label-att">Att %: {this.state.total.att}</p>
-          <p className="image-label-matt">Matt %: {this.state.total.matt}</p>
-          <p className="image-label-iedFinal">
-            Final dmg % after IED: {this.iedFinalDmg()}
-          </p>
-          <p className="image-label-final-word">
-            (BD% + Dmg% + 100%)(IED Final%)/100
-          </p>
-          <p className="image-label-final">
-            Final final %: {this.finalFinal()}
-          </p>
+          <div className="stats_div">
+            <img
+              src={require("../images/stat background2.png")}
+              alt=""
+              title="Stats table"
+            />
+            <p className="image-label-boss">{this.finalBoss()}</p>
+            <p className="image-label-damage">{this.state.total.damage}</p>
+            <p className="image-label-boss-def">
+              Def %: {this.state.enemyDef[0].value}
+            </p>
+            <p className="image-label-ied">
+              {(
+                (100 - this.state.iedFinal) * (this.state.eqSetBoss.ied / 100) +
+                this.state.iedFinal
+              ).toFixed(2)}
+            </p>
+            <p className="image-label-att">Att %: {this.state.total.att}</p>
+            <p className="image-label-matt">Matt %: {this.state.total.matt}</p>
+            <p className="image-label-iedFinal">
+              Final dmg % after IED: {this.iedFinalDmg()}
+            </p>
+            <p className="image-label-final-word">
+              (BD% + Dmg% + 100%)(IED Final%)/100
+            </p>
+            <p className="image-label-final">
+              Final final %: {this.finalFinal()}
+            </p>
+          </div>
         </div>
       </div>
     );

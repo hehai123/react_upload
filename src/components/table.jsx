@@ -17,7 +17,7 @@ class Table extends Component {
         <div className="wse_content">
           {this.props.table.test.map((option) => (
             <Selection
-              key={option.line}
+              key={option.id}
               option={option}
               onSelect={(e, input) =>
                 this.props.onSelect(e, input, this.props.table)

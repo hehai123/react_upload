@@ -12,7 +12,7 @@ class EnemyDef extends Component {
             type="Number"
             min={0}
             max={this.props.input.max}
-            value={this.props.input.value}
+            defaultValue={this.props.input.value}
             onChange={(e) => this.props.onChange(e.target.value)}
           />
         </div>

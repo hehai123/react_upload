@@ -24,7 +24,7 @@ code {
 }
 
 .equip_table {
-  width: 240px;
+  width: 250px;
 }
 
 .counter_table {
@@ -124,6 +124,16 @@ code {
 .input:focus {
   background-color: #fbf8cc;
   
+}
+
+.last-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.last-div-wse {
+  display: flex;
+  flex-direction: row;
 }
 
 .counters_div {
@@ -265,7 +275,7 @@ code {
 }
 
 .input-field {
-  padding: 5px;
+  padding: 10px;
 }
 
 .table-sub {
