@@ -4,8 +4,8 @@ import Selection from "./selection";
 class Table extends Component {
   render() {
     return (
-      <div className="wse_table">
-        <p className="table_header">
+      <div className="wse-table-test">
+        <p className={this.props.table.className}>
           {this.props.table.desc}
           <img
             className="icon_image"

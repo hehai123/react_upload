@@ -4,7 +4,7 @@ import React, { Component } from "react";
 class Selection extends Component {
   render() {
     return (
-      <div className="selection_row">
+      <div className="selection-row-wse">
         <label className="selection_label">{this.props.option.lineDesc}</label>
         <select
           className="selection_option"

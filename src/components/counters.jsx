@@ -13,6 +13,8 @@ import TableTest from "./tableTest";
 class Counters extends Component {
   state = {
     total: { boss: 0, damage: 0, att: 0, matt: 0 },
+    totalWse: { boss: 0, damage: 0, att: 0, matt: 0, ied: [] },
+    totalWse2: { boss: 0, damage: 0, att: 0, matt: 0, ied: [] },
     eqSetBoss: { boss: 0, ied: 0 },
     ied: [],
     iedFinal: 0,
@@ -851,6 +853,7 @@ class Counters extends Component {
         imageDesc: "Weapon",
         selected: ["0", "0", "0"],
         type: "wseMain",
+        className: "table-header-weapon",
         test: [
           {
             id: 1,
@@ -942,6 +945,7 @@ class Counters extends Component {
         imageDesc: "Secondary",
         selected: ["0", "0", "0"],
         type: "wseMain",
+        className: "table-header-secondary",
         test: [
           {
             id: 1,
@@ -1033,6 +1037,7 @@ class Counters extends Component {
         imageDesc: "Emblem",
         selected: ["0", "0", "0"],
         type: "wseMain",
+        className: "table-header-emblem",
         test: [
           {
             id: 1,
@@ -1106,6 +1111,517 @@ class Counters extends Component {
         ],
       },
     ],
+    wseMain2: [
+      {
+        id: 1,
+        desc: "Weapon",
+        imageSrc: require("../images/Genesis Two-handed Axe.png"),
+        imageDesc: "Weapon",
+        selected: ["0", "0", "0"],
+        type: "wseMain2",
+        className: "table-header-weapon",
+        test: [
+          {
+            id: 1,
+            lineDesc: "1st line",
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "40% Boss",
+              "35% Boss",
+              "30% Boss",
+              "20% Boss",
+              "40% Ied",
+              "35% Ied",
+              "30% Ied",
+              "15% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
+          },
+          {
+            id: 2,
+            lineDesc: "2nd line",
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "40% Boss",
+              "35% Boss",
+              "30% Boss",
+              "20% Boss",
+              "40% Ied",
+              "35% Ied",
+              "30% Ied",
+              "15% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
+          },
+          {
+            id: 3,
+            lineDesc: "3rd line",
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "40% Boss",
+              "35% Boss",
+              "30% Boss",
+              "20% Boss",
+              "40% Ied",
+              "35% Ied",
+              "30% Ied",
+              "15% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
+          },
+        ],
+      },
+      {
+        id: 2,
+        desc: "Secondary",
+        imageSrc: require("../images/Secondary.png"),
+        imageDesc: "Secondary",
+        selected: ["0", "0", "0"],
+        type: "wseMain2",
+        className: "table-header-secondary",
+        test: [
+          {
+            id: 1,
+            lineDesc: "1st line",
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "40% Boss",
+              "35% Boss",
+              "30% Boss",
+              "20% Boss",
+              "40% Ied",
+              "35% Ied",
+              "30% Ied",
+              "15% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
+          },
+          {
+            id: 2,
+            lineDesc: "2nd line",
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "40% Boss",
+              "35% Boss",
+              "30% Boss",
+              "20% Boss",
+              "40% Ied",
+              "35% Ied",
+              "30% Ied",
+              "15% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
+          },
+          {
+            id: 3,
+            lineDesc: "3rd line",
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "40% Boss",
+              "35% Boss",
+              "30% Boss",
+              "20% Boss",
+              "40% Ied",
+              "35% Ied",
+              "30% Ied",
+              "15% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
+          },
+        ],
+      },
+      {
+        id: 3,
+        desc: "Emblem",
+        imageSrc: require("../images/Mithra's Rage.png"),
+        imageDesc: "Emblem",
+        selected: ["0", "0", "0"],
+        type: "wseMain2",
+        className: "table-header-emblem",
+        test: [
+          {
+            id: 1,
+            lineDesc: "1st line",
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "40% Ied",
+              "35% Ied",
+              "30% Ied",
+              "15% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
+          },
+          {
+            id: 2,
+            lineDesc: "2nd line",
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "40% Ied",
+              "35% Ied",
+              "30% Ied",
+              "15% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
+          },
+          {
+            id: 3,
+            lineDesc: "3rd line",
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "40% Ied",
+              "35% Ied",
+              "30% Ied",
+              "15% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
+          },
+        ],
+      },
+    ],
+    wseAdd2: [
+      {
+        id: 1,
+        desc: "Weapon",
+        imageSrc: require("../images/Genesis Two-handed Axe.png"),
+        imageDesc: "Weapon",
+        selected: ["0", "0", "0"],
+        type: "wseAdd2",
+        className: "table-header-weapon",
+        test: [
+          {
+            id: 1,
+            lineDesc: "1st line",
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "18% Boss",
+              "12% Boss",
+              "5% Ied",
+              "4% Ied",
+              "3% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
+          },
+          {
+            id: 2,
+            lineDesc: "2nd line",
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "18% Boss",
+              "12% Boss",
+              "5% Ied",
+              "4% Ied",
+              "3% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
+          },
+          {
+            id: 3,
+            lineDesc: "3rd line",
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "18% Boss",
+              "12% Boss",
+              "5% Ied",
+              "4% Ied",
+              "3% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
+          },
+        ],
+      },
+      {
+        id: 2,
+        desc: "Secondary",
+        imageSrc: require("../images/Secondary.png"),
+        imageDesc: "Secondary",
+        selected: ["0", "0", "0"],
+        type: "wseAdd2",
+        className: "table-header-secondary",
+        test: [
+          {
+            id: 1,
+            lineDesc: "1st line",
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "18% Boss",
+              "12% Boss",
+              "5% Ied",
+              "4% Ied",
+              "3% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
+          },
+          {
+            id: 2,
+            lineDesc: "2nd line",
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "18% Boss",
+              "12% Boss",
+              "5% Ied",
+              "4% Ied",
+              "3% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
+          },
+          {
+            id: 3,
+            lineDesc: "3rd line",
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "18% Boss",
+              "12% Boss",
+              "5% Ied",
+              "4% Ied",
+              "3% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
+          },
+        ],
+      },
+      {
+        id: 3,
+        desc: "Emblem",
+        imageSrc: require("../images/Mithra's Rage.png"),
+        imageDesc: "Emblem",
+        selected: ["0", "0", "0"],
+        type: "wseAdd2",
+        className: "table-header-emblem",
+        test: [
+          {
+            id: 1,
+            lineDesc: "1st line",
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "5% Ied",
+              "4% Ied",
+              "3% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
+          },
+          {
+            id: 2,
+            lineDesc: "2nd line",
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "5% Ied",
+              "4% Ied",
+              "3% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
+          },
+          {
+            id: 3,
+            lineDesc: "3rd line",
+            value: [
+              "Others",
+              "12% Att",
+              "9% Att",
+              "6% Att",
+              "3% Att",
+              "12% Matt",
+              "9% Matt",
+              "6% Matt",
+              "3% Matt",
+              "5% Ied",
+              "4% Ied",
+              "3% Ied",
+              "12% Damage",
+              "9% Damage",
+              "6% Damage",
+              "3% Damage",
+            ],
+          },
+        ],
+      },
+    ],
     wseAdd: [
       {
         id: 1,
@@ -1114,6 +1630,7 @@ class Counters extends Component {
         imageDesc: "Weapon",
         selected: ["0", "0", "0"],
         type: "wseAdd",
+        className: "table-header-weapon",
         test: [
           {
             id: 1,
@@ -1196,6 +1713,7 @@ class Counters extends Component {
         imageDesc: "Secondary",
         selected: ["0", "0", "0"],
         type: "wseAdd",
+        className: "table-header-secondary",
         test: [
           {
             id: 1,
@@ -1278,6 +1796,7 @@ class Counters extends Component {
         imageDesc: "Emblem",
         selected: ["0", "0", "0"],
         type: "wseAdd",
+        className: "table-header-emblem",
         test: [
           {
             id: 1,
@@ -1624,14 +2143,74 @@ class Counters extends Component {
     this.setState({ inputs });
   };
 
+  //for wse
+  addWseBoss = (wse, value) => {
+    const inputs = this.state[wse];
+    inputs.boss += value;
+    this.setState({ inputs });
+  };
+
+  subWseBoss = (wse, value) => {
+    const inputs = this.state[wse];
+    inputs.boss -= value;
+    this.setState({ inputs });
+  };
+
+  addWseDmg = (wse, value) => {
+    const inputs = this.state[wse];
+    inputs.damage += value;
+    this.setState({ inputs });
+  };
+
+  subWseDmg = (wse, value) => {
+    const inputs = this.state[wse];
+    inputs.damage -= value;
+    this.setState({ inputs });
+  };
+
+  addWseAtt = (wse, value) => {
+    const inputs = this.state[wse];
+    inputs.att += value;
+    this.setState({ inputs });
+  };
+
+  subWseAtt = (wse, value) => {
+    const inputs = this.state[wse];
+    inputs.att -= value;
+    this.setState({ inputs });
+  };
+
+  addWseMatt = (wse, value) => {
+    const inputs = this.state[wse];
+    inputs.matt += value;
+    this.setState({ inputs });
+  };
+
+  subWseMatt = (wse, value) => {
+    const inputs = this.state[wse];
+    inputs.matt -= value;
+    this.setState({ inputs });
+  };
+
   handleOption = (e, option, wse) => {
-    const type = wse.type;
+    //table map which then maps selection option
+    //e is the option value
+    const type = wse.type; // returns wseMain wseAdd wseMain2 wseAdd etc
+    var type2 = ""; // for choosing which wse total to use
+
+    //choosing which wse total
+    if (type === "wseMain" || type === "wseAdd") {
+      type2 = "totalWse";
+    } else type2 = "totalWse2";
+
     const inputs = [...this.state[type]];
     const index = inputs.indexOf(wse);
-    const optionIndex = option.line - 1;
-    const optionOld = inputs[index].selected[optionIndex]; // recording the old selected option
-    const ieds = [...this.state.ied];
+    const optionIndex = option.id - 1; //important do not remove
 
+    const optionOld = inputs[index].selected[optionIndex]; // recording the old selected option
+    const ieds = this.state[type2].ied;
+
+    //converting "others" to "0"
     if (e === "Others") {
       inputs[index].selected[optionIndex] = "0";
     } else {
@@ -1640,39 +2219,43 @@ class Counters extends Component {
 
     this.setState({ inputs });
 
+    //choosing which wse total
+    if (type === "wseMain" || type === "wseAdd") {
+      type2 = "totalWse";
+    } else type2 = "totalWse2";
+
     const check_ied = "Ied";
     const check_boss = "Boss";
     const check_damage = "Damage";
     const check_matt = "Matt";
     const check_att = "Att";
-    var match_old = parseFloat(optionOld.match(/(\d+)/));
-    var match_new = parseFloat(e.match(/(\d+)/));
+    var value_old = parseFloat(optionOld.match(/(\d+)/));
+    var value_new = parseFloat(e.match(/(\d+)/));
 
     if (optionOld.includes(check_ied)) {
-      ieds.splice(ieds.indexOf(match_old), 1);
+      ieds.splice(ieds.indexOf(value_old), 1);
     } else if (optionOld.includes(check_boss)) {
-      this.subBoss(match_old);
+      this.subWseBoss(type2, value_old);
     } else if (optionOld.includes(check_att)) {
-      this.subAtt(match_old);
+      this.subWseAtt(type2, value_old);
     } else if (optionOld.includes(check_matt)) {
-      this.subMatt(match_old);
+      this.subWseMatt(type2, value_old);
     } else if (optionOld.includes(check_damage)) {
-      this.subDamage(match_old);
+      this.subWseDmg(type2, value_old);
     }
     if (e.includes(check_ied)) {
-      ieds.push(match_new);
+      ieds.push(value_new);
     } else if (e.includes(check_boss)) {
-      this.addBoss(match_new);
+      this.addWseBoss(type2, value_new);
     } else if (e.includes(check_att)) {
-      this.addAtt(match_new);
+      this.addWseAtt(type2, value_new);
     } else if (e.includes(check_matt)) {
-      this.addMatt(match_new);
+      this.addWseMatt(type2, value_new);
     } else if (e.includes(check_damage)) {
-      this.addDamage(match_new);
+      this.addWseDmg(type2, value_new);
     }
 
-    this.iedCalculator(ieds);
-    this.setState({ ied: ieds });
+    this.setState({ ieds });
   };
 
   adjustSet = (old, newer) => {
@@ -1879,25 +2462,103 @@ class Counters extends Component {
   };
 
   iedFinalDmg = () => {
-    const ied =
-      (100 - this.state.iedFinal) * (this.state.eqSetBoss.ied / 100) +
-      this.state.iedFinal;
+    const ied = this.statsIed();
 
     const def = this.state.enemyDef[0].value;
     const finalDmg = 100 - def * (1 - ied / 100);
     return finalDmg > 0 ? finalDmg.toFixed(2) : 0;
   };
 
+  statsIed = () => {
+    const ied1 = this.state.iedFinal;
+    const ied2 = this.state.eqSetBoss.ied;
+    var iedArray = [...this.state.totalWse.ied];
+    iedArray.push(ied1);
+    iedArray.push(ied2);
+
+    const iedFinal = this.setIedCalculator(iedArray);
+    return iedFinal;
+  };
+
   finalBoss = () => {
-    const boss = this.state.total.boss + this.state.eqSetBoss.boss;
+    const boss =
+      this.state.total.boss +
+      this.state.eqSetBoss.boss +
+      this.state.totalWse.boss;
     return boss;
   };
 
+  finalAtt = () => {
+    const att = this.state.total.att + this.state.totalWse.att;
+    return att;
+  };
+
+  finalMatt = () => {
+    const att = this.state.total.matt + this.state.totalWse.matt;
+    return att;
+  };
+
+  finalDmg = () => {
+    const att = this.state.total.damage + this.state.totalWse.damage;
+    return att;
+  };
+
   finalFinal = () => {
-    const dmg = this.state.total.damage;
+    const dmg = this.finalDmg();
     const boss = this.finalBoss();
-    const att = this.state.total.att;
+    const att = this.finalAtt();
     const iedFinalDmg = this.iedFinalDmg();
+    const finalFinal =
+      ((dmg + boss + 100) * iedFinalDmg * (att / 100 + 1)) / 100;
+    return finalFinal.toFixed(2);
+  };
+
+  finalBoss2 = () => {
+    const boss =
+      this.state.total.boss +
+      this.state.eqSetBoss.boss +
+      this.state.totalWse2.boss;
+    return boss;
+  };
+
+  finalAtt2 = () => {
+    const att = this.state.total.att + this.state.totalWse2.att;
+    return att;
+  };
+
+  finalMatt2 = () => {
+    const att = this.state.total.matt + this.state.totalWse2.matt;
+    return att;
+  };
+
+  finalDmg2 = () => {
+    const att = this.state.total.damage + this.state.totalWse2.damage;
+    return att;
+  };
+
+  statsIed2 = () => {
+    const ied1 = this.state.iedFinal;
+    const ied2 = this.state.eqSetBoss.ied;
+    var iedArray = [...this.state.totalWse2.ied];
+    iedArray.push(ied1);
+    iedArray.push(ied2);
+
+    const iedFinal = this.setIedCalculator(iedArray);
+    return iedFinal;
+  };
+
+  iedFinalDmg2 = () => {
+    const ied = this.statsIed2();
+    const def = this.state.enemyDef[0].value;
+    const finalDmg = 100 - def * (1 - ied / 100);
+    return finalDmg > 0 ? finalDmg.toFixed(2) : 0;
+  };
+
+  finalFinal2 = () => {
+    const dmg = this.finalDmg2();
+    const boss = this.finalBoss2();
+    const att = this.finalAtt2();
+    const iedFinalDmg = this.iedFinalDmg2();
     const finalFinal =
       ((dmg + boss + 100) * iedFinalDmg * (att / 100 + 1)) / 100;
     return finalFinal.toFixed(2);
@@ -2030,6 +2691,32 @@ class Counters extends Component {
     this.setState({ inputs });
   };
 
+  handleResult = () => {
+    var resultsClass = "";
+
+    const final1 = parseFloat(this.finalFinal());
+    const final2 = parseFloat(this.finalFinal2());
+    var diff = 0;
+    var display = "";
+
+    if (final1 === final2) {
+      display = "Your WSE combinations have the same final damage output.";
+      resultsClass = "div-results-same";
+    } else if (final1 > final2) {
+      diff = (final1 / final2 - 1) * 100;
+      diff = diff.toFixed(2);
+      display = "Your first WSE combination is stronger by " + diff + "%.";
+      resultsClass = "div-results-left";
+    } else {
+      diff = (final2 / final1 - 1) * 100;
+      diff = diff.toFixed(2);
+      display = "Your second WSE combination is stronger by " + diff + "%.";
+      resultsClass = "div-results-right";
+    }
+
+    return [display, resultsClass];
+  };
+
   render() {
     return (
       <div className="table_overall">
@@ -2082,28 +2769,6 @@ class Counters extends Component {
                 key={input.id} // check this pls
                 input={input}
                 onChange={this.handleEnemyDef}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* For additional inputs */}
-        <div className="table-sub">
-          <div className="input-field-2">
-            {this.state.iedFill.map((input) => (
-              <Table2
-                key={input.id} // check this pls
-                input={input}
-                onChange={this.handleInputField}
-              />
-            ))}
-          </div>
-          <div>
-            {this.state.additionalWaMa.map((input) => (
-              <Table3
-                key={input.id} // check this pls
-                input={input}
-                onInput={this.handleInputFieldAtt}
               />
             ))}
           </div>
@@ -2199,59 +2864,136 @@ class Counters extends Component {
           </div>
         </div>
 
-        <div className="last-div">
-          <div className="last-div-wse">
-            <div className="counters_div">
-              {this.state.wseMain.map((table) => (
-                <Table
-                  key={table.id}
-                  table={table}
-                  onSelect={this.handleOption}
-                />
-              ))}
-            </div>
-
-            <div className="counters_div">
-              {this.state.wseAdd.map((table) => (
-                <Table
-                  key={table.id}
-                  table={table}
-                  onSelect={this.handleOption}
-                />
-              ))}
-            </div>
+        {/* For additional inputs */}
+        <div className="table-sub">
+          <div className="input-field-2">
+            {this.state.iedFill.map((input) => (
+              <Table2
+                key={input.id} // check this pls
+                input={input}
+                onChange={this.handleInputField}
+              />
+            ))}
           </div>
-
-          <div className="stats_div">
-            <img
-              src={require("../images/stat background2.png")}
-              alt=""
-              title="Stats table"
-            />
-            <p className="image-label-boss">{this.finalBoss()}</p>
-            <p className="image-label-damage">{this.state.total.damage}</p>
-            <p className="image-label-boss-def">
-              Def %: {this.state.enemyDef[0].value}
-            </p>
-            <p className="image-label-ied">
-              {(
-                (100 - this.state.iedFinal) * (this.state.eqSetBoss.ied / 100) +
-                this.state.iedFinal
-              ).toFixed(2)}
-            </p>
-            <p className="image-label-att">Att %: {this.state.total.att}</p>
-            <p className="image-label-matt">Matt %: {this.state.total.matt}</p>
-            <p className="image-label-iedFinal">
-              Final dmg % after IED: {this.iedFinalDmg()}
-            </p>
-            <p className="image-label-final-word">
-              (BD% + Dmg% + 100%)(IED Final%)/100
-            </p>
-            <p className="image-label-final">
-              Final final %: {this.finalFinal()}
-            </p>
+          <div>
+            {this.state.additionalWaMa.map((input) => (
+              <Table3
+                key={input.id} // check this pls
+                input={input}
+                onInput={this.handleInputFieldAtt}
+              />
+            ))}
           </div>
         </div>
+
+        <div className="div-wse-compare">
+          {/* for comparison, first wse */}
+          <div className="div-wse-compare-table">
+            <div className="div-wse-2-tables">
+              <div className="div-wse-group">
+                <p className="group-header-wse-left">Main Potential</p>
+                <div className="counters-div">
+                  {this.state.wseMain.map((table) => (
+                    <Table
+                      key={table.id}
+                      table={table}
+                      onSelect={this.handleOption}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div className="div-wse-group">
+                <p className="group-header-wse-left">Additional Potential</p>
+                <div className="counters-div">
+                  {this.state.wseAdd.map((table) => (
+                    <Table
+                      key={table.id}
+                      table={table}
+                      onSelect={this.handleOption}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="stats_div">
+              <img
+                src={require("../images/stat background2.png")}
+                alt=""
+                title="Stats table"
+              />
+              <p className="image-label-boss">{this.finalBoss()}</p>
+              <p className="image-label-damage">{this.finalDmg()}</p>
+              <p className="image-label-boss-def">
+                Def %: {this.state.enemyDef[0].value}
+              </p>
+              <p className="image-label-ied">{this.statsIed().toFixed(2)}</p>
+              <p className="image-label-att">Att %: {this.finalAtt()}</p>
+              <p className="image-label-matt">Matt %: {this.finalMatt()}</p>
+              <p className="image-label-iedFinal">
+                Final dmg % after IED: {this.iedFinalDmg()}
+              </p>
+              <p className="image-label-final">
+                Final final %: {this.finalFinal()}
+              </p>
+            </div>
+          </div>
+
+          {/* for comparison, second wse */}
+          <div className="div-wse-compare-table">
+            <div className="div-wse-2-tables">
+              <div className="div-wse-group">
+                <p className="group-header-wse-right">Main Potential</p>
+                <div className="counters-div">
+                  {this.state.wseMain2.map((table) => (
+                    <Table
+                      key={table.id}
+                      table={table}
+                      onSelect={this.handleOption}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div className="div-wse-group">
+                <p className="group-header-wse-right">Additional Potential</p>
+                <div className="counters-div">
+                  {this.state.wseAdd2.map((table) => (
+                    <Table
+                      key={table.id}
+                      table={table}
+                      onSelect={this.handleOption}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="stats_div">
+              <img
+                src={require("../images/stat background2.png")}
+                alt=""
+                title="Stats table"
+              />
+              <p className="image-label-boss">{this.finalBoss2()}</p>
+              <p className="image-label-damage">{this.finalDmg2()}</p>
+              <p className="image-label-boss-def">
+                Def %: {this.state.enemyDef[0].value}
+              </p>
+              <p className="image-label-ied">{this.statsIed2().toFixed(2)}</p>
+              <p className="image-label-att">Att %: {this.finalAtt2()}</p>
+              <p className="image-label-matt">Matt %: {this.finalMatt2()}</p>
+              <p className="image-label-iedFinal">
+                Final dmg % after IED: {this.iedFinalDmg2()}
+              </p>
+              <p className="image-label-final">
+                Final final %: {this.finalFinal2()}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className={this.handleResult()[1]}>{this.handleResult()[0]}</div>
       </div>
     );
   }
