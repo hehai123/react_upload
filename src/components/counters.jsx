@@ -12,6 +12,7 @@ import TableTest from "./tableTest";
 
 class Counters extends Component {
   state = {
+    statsWindow: { boss: 0, damage: 0, att: 0, matt: 0, ied: 0 },
     total: { boss: 0, damage: 0, att: 0, matt: 0 },
     totalWse: { boss: 0, damage: 0, att: 0, matt: 0, ied: [] },
     totalWse2: { boss: 0, damage: 0, att: 0, matt: 0, ied: [] },
@@ -596,11 +597,7 @@ class Counters extends Component {
         imageSrc: require("../images/Fury Unleashed.png"),
         imageDesc: "Fury Unleashed",
         checked: false,
-        boss: 15,
-        damage: 0,
-        ied: 0,
-        att: 0,
-        matt: 0,
+        stats: { boss: 15 },
       },
       {
         id: 2,
@@ -608,11 +605,7 @@ class Counters extends Component {
         imageSrc: require("../images/Wild Rage.png"),
         imageDesc: "Wild Rage",
         checked: false,
-        boss: 0,
-        damage: 10,
-        ied: 0,
-        att: 0,
-        matt: 0,
+        stats: { damage: 10 },
       },
       {
         id: 3,
@@ -620,11 +613,7 @@ class Counters extends Component {
         imageSrc: require("../images/Elementalism.png"),
         imageDesc: "Elementalism Rage",
         checked: false,
-        boss: 0,
-        damage: 10,
-        ied: 0,
-        att: 0,
-        matt: 0,
+        stats: { damage: 10 },
       },
       {
         id: 4,
@@ -632,11 +621,7 @@ class Counters extends Component {
         imageSrc: require("../images/Magician's Erudition.png"),
         imageDesc: "Magician's Erudition",
         checked: false,
-        boss: 0,
-        damage: 9,
-        ied: 9,
-        att: 0,
-        matt: 0,
+        stats: { damage: 9, ied: 9 },
       },
       {
         id: 5,
@@ -644,11 +629,7 @@ class Counters extends Component {
         imageSrc: require("../images/Rhinne's Blessing.png"),
         imageDesc: "Rhinne's Blessing",
         checked: false,
-        boss: 0,
-        damage: 0,
-        ied: 10,
-        att: 0,
-        matt: 0,
+        stats: { ied: 10 },
       },
       {
         id: 6,
@@ -656,11 +637,7 @@ class Counters extends Component {
         imageSrc: require("../images/Confidence.png"),
         imageDesc: "Confidence",
         checked: false,
-        boss: 0,
-        damage: 0,
-        ied: 10,
-        att: 0,
-        matt: 0,
+        stats: { ied: 10 },
       },
       {
         id: 7,
@@ -668,11 +645,7 @@ class Counters extends Component {
         imageSrc: require("../images/Light Wash.png"),
         imageDesc: "Light Wash",
         checked: false,
-        boss: 0,
-        damage: 0,
-        ied: 15,
-        att: 0,
-        matt: 0,
+        stats: { ied: 15 },
       },
       {
         id: 8,
@@ -680,11 +653,7 @@ class Counters extends Component {
         imageSrc: require("../images/Ecstasy.png"),
         imageDesc: "Ecstasy",
         checked: false,
-        boss: 0,
-        damage: 11,
-        ied: 0,
-        att: 0,
-        matt: 0,
+        stats: { damage: 11 },
       },
       {
         id: 9,
@@ -692,11 +661,7 @@ class Counters extends Component {
         imageSrc: require("../images/Intensive Insult.png"),
         imageDesc: "Intensive Insult",
         checked: false,
-        boss: 0,
-        damage: 12,
-        ied: 0,
-        att: 0,
-        matt: 0,
+        stats: { damage: 12 },
       },
       {
         id: 10,
@@ -704,11 +669,7 @@ class Counters extends Component {
         imageSrc: require("../images/Prior Preperation.png"),
         imageDesc: "Prior Preperation",
         checked: false,
-        boss: 0,
-        damage: 17,
-        ied: 0,
-        att: 0,
-        matt: 0,
+        stats: { damage: 17 },
       },
       {
         id: 11,
@@ -716,11 +677,7 @@ class Counters extends Component {
         imageSrc: require("../images/Terms and Conditions.png"),
         imageDesc: "Terms and Conditions",
         checked: false,
-        boss: 0,
-        damage: 45,
-        ied: 0,
-        att: 0,
-        matt: 0,
+        stats: { damage: 45 },
       },
       {
         id: 12,
@@ -728,11 +685,7 @@ class Counters extends Component {
         imageSrc: require("../images/Thieves' Cunning.png"),
         imageDesc: "Thieves' Cunning",
         checked: false,
-        boss: 0,
-        damage: 18,
-        ied: 0,
-        att: 0,
-        matt: 0,
+        stats: { damage: 18 },
       },
       {
         id: 13,
@@ -740,11 +693,7 @@ class Counters extends Component {
         imageSrc: require("../images/Noblesse.png"),
         imageDesc: "Noblesse",
         checked: false,
-        boss: 4,
-        damage: 8,
-        ied: 0,
-        att: 0,
-        matt: 0,
+        stats: { boss: 4, damage: 8 },
       },
       {
         id: 14,
@@ -752,11 +701,7 @@ class Counters extends Component {
         imageSrc: require("../images/Flow of Battle.png"),
         imageDesc: "Flow of Battle",
         checked: false,
-        boss: 0,
-        damage: 12,
-        ied: 0,
-        att: 0,
-        matt: 0,
+        stats: { damage: 12 },
       },
       {
         id: 15,
@@ -764,11 +709,7 @@ class Counters extends Component {
         imageSrc: require("../images/Call of the Wild.png"),
         imageDesc: "Call of the Wild",
         checked: false,
-        boss: 0,
-        damage: 0,
-        ied: 0,
-        att: 10,
-        matt: 10,
+        stats: { att: 10, matt: 10 },
       },
       {
         id: 16,
@@ -776,11 +717,7 @@ class Counters extends Component {
         imageSrc: require("../images/Advanced Blessing.png"),
         imageDesc: "Advanced Blessing",
         checked: false,
-        boss: 10,
-        damage: 0,
-        ied: 0,
-        att: 0,
-        matt: 0,
+        stats: { boss: 10 },
       },
       {
         id: 17,
@@ -788,11 +725,7 @@ class Counters extends Component {
         imageSrc: require("../images/Bellflower Barrier.png"),
         imageDesc: "Bellflower Barrier",
         checked: false,
-        boss: 25,
-        damage: 20,
-        ied: 0,
-        att: 0,
-        matt: 0,
+        stats: { boss: 25, damage: 20 },
       },
     ],
     augSoul: [
@@ -858,6 +791,7 @@ class Counters extends Component {
           {
             id: 1,
             lineDesc: "1st line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -885,6 +819,7 @@ class Counters extends Component {
           {
             id: 2,
             lineDesc: "2nd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -912,6 +847,7 @@ class Counters extends Component {
           {
             id: 3,
             lineDesc: "3rd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -950,6 +886,7 @@ class Counters extends Component {
           {
             id: 1,
             lineDesc: "1st line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -977,6 +914,7 @@ class Counters extends Component {
           {
             id: 2,
             lineDesc: "2nd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1004,6 +942,7 @@ class Counters extends Component {
           {
             id: 3,
             lineDesc: "3rd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1042,6 +981,7 @@ class Counters extends Component {
           {
             id: 1,
             lineDesc: "1st line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1065,6 +1005,7 @@ class Counters extends Component {
           {
             id: 2,
             lineDesc: "2nd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1088,6 +1029,7 @@ class Counters extends Component {
           {
             id: 3,
             lineDesc: "3rd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1124,6 +1066,7 @@ class Counters extends Component {
           {
             id: 1,
             lineDesc: "1st line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1151,6 +1094,7 @@ class Counters extends Component {
           {
             id: 2,
             lineDesc: "2nd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1178,6 +1122,7 @@ class Counters extends Component {
           {
             id: 3,
             lineDesc: "3rd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1216,6 +1161,7 @@ class Counters extends Component {
           {
             id: 1,
             lineDesc: "1st line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1243,6 +1189,7 @@ class Counters extends Component {
           {
             id: 2,
             lineDesc: "2nd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1270,6 +1217,7 @@ class Counters extends Component {
           {
             id: 3,
             lineDesc: "3rd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1308,6 +1256,7 @@ class Counters extends Component {
           {
             id: 1,
             lineDesc: "1st line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1331,6 +1280,7 @@ class Counters extends Component {
           {
             id: 2,
             lineDesc: "2nd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1354,6 +1304,7 @@ class Counters extends Component {
           {
             id: 3,
             lineDesc: "3rd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1390,6 +1341,7 @@ class Counters extends Component {
           {
             id: 1,
             lineDesc: "1st line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1414,6 +1366,7 @@ class Counters extends Component {
           {
             id: 2,
             lineDesc: "2nd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1438,6 +1391,7 @@ class Counters extends Component {
           {
             id: 3,
             lineDesc: "3rd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1473,6 +1427,7 @@ class Counters extends Component {
           {
             id: 1,
             lineDesc: "1st line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1497,6 +1452,7 @@ class Counters extends Component {
           {
             id: 2,
             lineDesc: "2nd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1521,6 +1477,7 @@ class Counters extends Component {
           {
             id: 3,
             lineDesc: "3rd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1556,6 +1513,7 @@ class Counters extends Component {
           {
             id: 1,
             lineDesc: "1st line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1578,6 +1536,7 @@ class Counters extends Component {
           {
             id: 2,
             lineDesc: "2nd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1600,6 +1559,7 @@ class Counters extends Component {
           {
             id: 3,
             lineDesc: "3rd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1635,6 +1595,7 @@ class Counters extends Component {
           {
             id: 1,
             lineDesc: "1st line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1659,6 +1620,7 @@ class Counters extends Component {
           {
             id: 2,
             lineDesc: "2nd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1683,6 +1645,7 @@ class Counters extends Component {
           {
             id: 3,
             lineDesc: "3rd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1718,6 +1681,7 @@ class Counters extends Component {
           {
             id: 1,
             lineDesc: "1st line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1742,6 +1706,7 @@ class Counters extends Component {
           {
             id: 2,
             lineDesc: "2nd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1766,6 +1731,7 @@ class Counters extends Component {
           {
             id: 3,
             lineDesc: "3rd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1801,6 +1767,7 @@ class Counters extends Component {
           {
             id: 1,
             lineDesc: "1st line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1823,6 +1790,7 @@ class Counters extends Component {
           {
             id: 2,
             lineDesc: "2nd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1845,6 +1813,7 @@ class Counters extends Component {
           {
             id: 3,
             lineDesc: "3rd line",
+            selectedOption: "Others",
             value: [
               "Others",
               "12% Att",
@@ -1920,6 +1889,7 @@ class Counters extends Component {
   };
 
   iedCalculator = (array) => {
+    //const stats = this.state.statsWindow;
     const arr = array;
     const size = arr.length;
     var start = 0;
@@ -1929,82 +1899,72 @@ class Counters extends Component {
     for (var i = 1; i < size; i++) {
       start = (100 - start) * (arr[i] / 100) + start;
     }
+
+    //stats.ied = start;
+
+    //this.setState({ stats });
     this.setState({ iedFinal: start });
+
     //console.log(start.toFixed(2));
   };
 
-  setIedCalculator = (array) => {
-    const arr = array;
-    const size = arr.length;
+  calculateIed = (array) => {
+    const size = array.length;
     var start = 0;
+
+    //shorten this part
     if (size > 0) {
-      start = arr[0];
+      start = array[0];
     }
     for (var i = 1; i < size; i++) {
-      start = (100 - start) * (arr[i] / 100) + start;
+      start = (100 - start) * (array[i] / 100) + start;
     }
 
     return start;
   };
 
-  handleClick = (skill) => {
-    const skills = [...this.state.skills]; // clone a copy
-    const index = skills.indexOf(skill); // getting the index
-    skills[index] = { ...skill }; // making a copy
-    const checked = skills[index].checked;
-    if (checked === false) {
-      skills[index].checked = true;
-    } else skills[index].checked = false;
-    this.setState({ skills });
-    console.log(skill.checked);
-  };
+  // handleClick = (skill) => {
+  //   const skills = [...this.state.skills]; // clone a copy
+  //   const index = skills.indexOf(skill); // getting the index
+  //   skills[index] = { ...skill }; // making a copy
+  //   const checked = skills[index].checked;
+  //   if (checked === false) {
+  //     skills[index].checked = true;
+  //   } else skills[index].checked = false;
+  //   this.setState({ skills });
+  //   console.log(skill.checked);
+  // };
 
   handleCheckbox = (skill) => {
-    const skills = [...this.state.skills]; // clone a copy
-    const index = skills.indexOf(skill); // getting the index
-    skills[index] = { ...skill }; // making a copy
-
-    const boss_value = skills[index].boss;
-    const damage_value = skills[index].damage;
-    const ied_value = skills[index].ied;
-    const att_value = skills[index].att;
-    const matt_value = skills[index].matt;
-
+    const stats = { ...this.state.statsWindow };
+    const skills = [...this.state.skills];
+    const index = skills.indexOf(skill);
     const ieds = [...this.state.ied];
 
-    const checked = skills[index].checked;
-    const totals = this.state.total;
+    const length = Object.keys(skills[index].stats).length; // getting lenght of the stats keys
+    const arr = Object.keys(skills[index].stats); //getting array of the stats name i.e. boss, damage
 
-    if (checked === false) {
-      skills[index].checked = true;
-      totals.boss += boss_value;
-      totals.damage += damage_value;
-      totals.att += att_value;
-      totals.matt += matt_value;
-      if (ied_value !== 0) {
-        ieds.push(ied_value);
-        this.setState({ ied: ieds });
-        this.iedCalculator(ieds);
-      }
-    } else {
-      skills[index].checked = false;
-      totals.boss -= boss_value;
-      totals.damage -= damage_value;
-      totals.att -= att_value;
-      totals.matt -= matt_value;
-      if (ied_value !== 0) {
-        const iedIndex = ieds.indexOf(ied_value);
-        if (ieds !== -1) {
+    for (var i = 0; i < length; i++) {
+      if (skills[index].checked === false) {
+        if (arr[i] === "ied") {
+          ieds.push(skills[index].stats[arr[i]]);
+          stats[arr[i]] = this.calculateIed(ieds);
+        } else stats[arr[i]] += skills[index].stats[arr[i]];
+      } else {
+        if (arr[i] === "ied") {
+          const iedIndex = ieds.indexOf(skills[index].stats[arr[i]]);
           ieds.splice(iedIndex, 1);
-          this.setState({ ied: ieds });
-          this.iedCalculator(ieds);
-        }
+          stats[arr[i]] = this.calculateIed(ieds);
+        } else stats[arr[i]] -= skills[index].stats[arr[i]];
       }
     }
+    skills[index].checked = !skills[index].checked;
 
+    this.setState({ ied: ieds });
     this.setState({ skills });
-    this.setState({ totals });
-    console.log(ieds);
+    this.setState({ statsWindow: stats });
+
+    console.log(this.state.statsWindow);
   };
 
   //For hyper stats etc
@@ -2012,10 +1972,10 @@ class Counters extends Component {
     const varName = input.name;
     const inputs = [...this.state[varName]];
     const index = inputs.indexOf(input);
-    const totals = this.state.total; // sum of all boss, dmg ,att etc
+    const stats = { ...this.state.statsWindow }; // sum of all boss, dmg ,att etc
     const max = inputs[index].max;
-    var new_value = this.safeParseFloat(value);
 
+    var new_value = this.safeParseFloat(value);
     if (new_value > max) {
       new_value = max;
     }
@@ -2032,115 +1992,119 @@ class Counters extends Component {
           ieds.push(new_value);
         }
         this.setState({ ied: ieds });
-        this.iedCalculator(ieds);
+        stats.ied = this.calculateIed(ieds);
         break;
       case "Boss":
         const oldBoss = inputs[index].value;
         if (oldBoss !== 0) {
-          totals.boss -= oldBoss;
+          stats.boss -= oldBoss;
         }
         if (new_value !== 0) {
-          totals.boss += new_value;
+          stats.boss += new_value;
         }
-        this.setState({ totals });
         break;
       case "Damage":
         const oldDmg = inputs[index].value;
         if (oldDmg !== 0) {
-          totals.damage -= oldDmg;
+          stats.damage -= oldDmg;
         }
         if (new_value !== 0) {
-          totals.damage += new_value;
+          stats.damage += new_value;
         }
-        this.setState({ totals });
         break;
       default:
         break;
     }
 
     inputs[index].value = new_value;
+
+    this.setState({ statsWindow: stats });
     this.setState({ inputs }); // what is going on here
+    console.log(this.state.statsWindow);
   };
 
   handleIedArray = (old_ied, new_ied) => {
+    const stats = { ...this.state.statsWindow };
     const ieds = [...this.state.ied];
     if (old_ied !== 0) ieds.splice(ieds.indexOf(old_ied), 1);
     if (new_ied !== 0) ieds.push(new_ied);
 
-    this.iedCalculator(ieds);
+    stats.ied = this.calculateIed(ieds);
+
+    this.setState({ statsWindow: stats });
     this.setState({ ied: ieds });
   };
 
   //Two in 1 function
   handleBoss = (old_boss, new_boss) => {
-    const inputs = this.state.total;
-    inputs.boss -= old_boss;
-    inputs.boss += new_boss;
-    this.setState({ inputs });
+    const stats = { ...this.state.statsWindow };
+    stats.boss -= old_boss;
+    stats.boss += new_boss;
+    this.setState({ statsWindow: stats });
   };
 
   //Two in 1 function
   handleDmg = (old_dmg, new_dmg) => {
-    const inputs = this.state.total;
-    inputs.damage -= old_dmg;
-    inputs.damage += new_dmg;
-    this.setState({ inputs });
+    const stats = { ...this.state.statsWindow };
+    stats.damage -= old_dmg;
+    stats.damage += new_dmg;
+    this.setState({ statsWindow: stats });
   };
 
   //Two in 1 function
   handleAtt = (old_att, new_att) => {
-    const inputs = this.state.total;
-    inputs.att -= old_att;
-    inputs.att += new_att;
-    this.setState({ inputs });
+    const stats = { ...this.state.statsWindow };
+    stats.att -= old_att;
+    stats.att += new_att;
+    this.setState({ statsWindow: stats });
   };
 
   addBoss = (value) => {
-    const inputs = this.state.total;
-    inputs.boss += value;
-    this.setState({ inputs });
+    const stats = { ...this.state.statsWindow };
+    stats.boss += value;
+    this.setState({ statsWindow: stats });
   };
 
   subBoss = (value) => {
-    const inputs = this.state.total;
-    inputs.boss -= value;
-    this.setState({ inputs });
+    const stats = { ...this.state.statsWindow };
+    stats.boss -= value;
+    this.setState({ statsWindow: stats });
   };
 
   addDamage = (value) => {
-    const inputs = this.state.total;
-    inputs.damage += value;
-    this.setState({ inputs });
+    const stats = { ...this.state.statsWindow };
+    stats.damage += value;
+    this.setState({ statsWindow: stats });
   };
 
   subDamage = (value) => {
-    const inputs = this.state.total;
-    inputs.damage -= value;
-    this.setState({ inputs });
+    const stats = { ...this.state.statsWindow };
+    stats.damage -= value;
+    this.setState({ statsWindow: stats });
   };
 
   addAtt = (value) => {
-    const inputs = this.state.total;
-    inputs.att += value;
-    this.setState({ inputs });
+    const stats = { ...this.state.statsWindow };
+    stats.att += value;
+    this.setState({ statsWindow: stats });
   };
 
   subAtt = (value) => {
-    const inputs = this.state.total;
-    inputs.att -= value;
-    this.setState({ inputs });
+    const stats = { ...this.state.statsWindow };
+    stats.att -= value;
+    this.setState({ statsWindow: stats });
   };
 
   addMatt = (value) => {
-    const inputs = this.state.total;
-    inputs.matt += value;
-    this.setState({ inputs });
+    const stats = { ...this.state.statsWindow };
+    stats.matt += value;
+    this.setState({ statsWindow: stats });
   };
 
   subMatt = (value) => {
-    const inputs = this.state.total;
-    inputs.matt -= value;
-    this.setState({ inputs });
+    const stats = { ...this.state.statsWindow };
+    stats.matt -= value;
+    this.setState({ statsWindow: stats });
   };
 
   //for wse
@@ -2209,6 +2173,10 @@ class Counters extends Component {
 
     const optionOld = inputs[index].selected[optionIndex]; // recording the old selected option
     const ieds = this.state[type2].ied;
+    //console.log(type2);
+
+    const index2 = inputs[index].test.indexOf(option);
+    inputs[index].test[index2].selectedOption = e;
 
     //converting "others" to "0"
     if (e === "Others") {
@@ -2216,13 +2184,6 @@ class Counters extends Component {
     } else {
       inputs[index].selected[optionIndex] = e;
     }
-
-    this.setState({ inputs });
-
-    //choosing which wse total
-    if (type === "wseMain" || type === "wseAdd") {
-      type2 = "totalWse";
-    } else type2 = "totalWse2";
 
     const check_ied = "Ied";
     const check_boss = "Boss";
@@ -2255,7 +2216,7 @@ class Counters extends Component {
       this.addWseDmg(type2, value_new);
     }
 
-    this.setState({ ieds });
+    this.setState({ inputs });
   };
 
   adjustSet = (old, newer) => {
@@ -2347,25 +2308,28 @@ class Counters extends Component {
       if (ied !== 0) ied_arr.push(ied);
     }
 
-    console.log("ied", ied_arr);
+    //console.log("ied", ied_arr);
 
-    ied_final = this.setIedCalculator(ied_arr);
+    ied_final = this.calculateIed(ied_arr);
 
     this.setState({ setNumber: setNumbers });
-    console.log("setstate", this.state.setNumber);
+    //console.log("setstate", this.state.setNumber);
     return [boss, ied_final];
   };
 
   handleEquip = (e, eq) => {
     const inputs = [...this.state.equipment];
-    const totals = this.state.total; // sum of all boss, dmg ,att etc
+    const stats = { ...this.state.statsWindow }; // sum of all boss, dmg ,att etc
     var eqSetBosss = this.state.eqSetBoss;
     const index = inputs.indexOf(eq); // index = 3 for weapon
-    console.log("eq", eq);
+    //console.log("eq", eq);
+    //two ieds 1) set effect 2) eq ied
     const ieds = [...this.state.ied];
+    const eqSetIed_old = eqSetBosss.ied;
+    const eqSetBoss_old = eqSetBosss.boss;
 
     var boss = 0;
-    var iedAdd = 0;
+    var eqSetIed_new = 0;
 
     var selectedOld = inputs[index].selected;
 
@@ -2390,11 +2354,9 @@ class Counters extends Component {
     //Set eqSet effect
     var variable = this.adjustSet(selectedOld, e_value);
     boss = variable[0];
-    iedAdd = variable[1];
-    //if (iedAdd !== 0) ieds.push(iedAdd);
-    console.log("iedAdd: ", iedAdd);
+    eqSetIed_new = variable[1];
 
-    //Set eq ied
+    //Eq ied
     const ied_old_value = inputs[index][selectedOld][0].ied;
     if (ied_old_value !== 0) ieds.splice(ieds.indexOf(ied_old_value), 1);
 
@@ -2406,37 +2368,50 @@ class Counters extends Component {
     //Hard coded for now
     if (index === 3) {
       console.log(selectedOld, typeof e_value);
-      if (selectedOld === "None") totals.boss += 30;
-      if (e_value === "None") totals.boss -= 30;
+      if (selectedOld === "None") stats.boss += 30;
+      if (e_value === "None") stats.boss -= 30;
     }
 
     eqSetBosss.boss = boss;
-    eqSetBosss.ied = iedAdd;
+    const eqSetBoss_new = boss;
+    eqSetBosss.ied = eqSetIed_new;
+
+    //setting stat windows
+    if (eqSetIed_old !== 0) {
+      const iedIndex = ieds.indexOf(eqSetIed_old);
+      ieds.splice(iedIndex, 1);
+    }
+    if (eqSetIed_new !== 0) ieds.push(eqSetIed_new);
+
+    stats.boss -= eqSetBoss_old;
+    stats.boss += eqSetBoss_new;
+    stats.ied = this.calculateIed(ieds);
 
     this.setState({ eqSetBoss: eqSetBosss });
-    console.log("Eq set effect boss damage and ied: ", this.state.eqSetBoss);
-    this.setState({ totals });
-    this.iedCalculator(ieds);
+    //console.log("Eq set effect boss damage and ied: ", this.state.eqSetBoss);
+    this.setState({ statsWindow: stats });
     this.setState({ ied: ieds });
     this.setState({ inputs });
-    console.log("ied array: ", ieds);
+    //console.log("ied array: ", ieds);
   };
 
   handleSet = (option, setType) => {
-    var eqSetBosss = this.state.eqSetBoss;
+    var eqSetBosss = { ...this.state.eqSetBoss };
     const inputs = [...this.state.bossSet];
     const index = inputs.indexOf(setType); // index = 3 for weapon
     const setNumbers = [...this.state.setNumber]; // Fafnir, Absolabs, Arcaneshade, Eternal, Dawn, Dark, Monster, Lucky item (7)
+    const stats = { ...this.state.statsWindow };
+    const ieds = [...this.state.ied];
 
     setNumbers[index + 4] = parseInt(option);
 
-    //console.log(setNumbers[index + 4], this.state.setEffect[0][5][9]);
-    //console.log(setNumbers.length);
+    const boss_old = eqSetBosss.boss;
+    const eqSetIed_old = eqSetBosss.ied;
 
     var boss = 0;
     var ied = 0;
     var ied_arr = [];
-    var ied_final = 0;
+    var eqSetIed_new = 0;
 
     // setNumber last element is for lucky item, don't need to check
     for (var i = 0; i < setNumbers.length - 1; i++) {
@@ -2444,14 +2419,25 @@ class Counters extends Component {
       ied = this.state.setEffect[0][i][setNumbers[i]].ied;
       if (ied !== 0) ied_arr.push(ied);
     }
-    ied_final = this.setIedCalculator(ied_arr);
+    eqSetIed_new = this.calculateIed(ied_arr);
 
     eqSetBosss.boss = boss;
-    eqSetBosss.ied = ied_final;
+    eqSetBosss.ied = eqSetIed_new;
 
+    //newly added stuff
+    //setting stat windows
+    const iedIndex = ieds.indexOf(eqSetIed_old);
+    ieds.splice(iedIndex, 1);
+    ieds.push(eqSetIed_new);
+    stats.ied = this.calculateIed(ieds);
+
+    stats.boss -= boss_old;
+    stats.boss += boss;
+
+    this.setState({ statsWindow: stats });
     this.setState({ setNumber: setNumbers });
     this.setState({ eqSetBoss: eqSetBosss });
-    console.log("Eq set effect boss damage and ied: ", this.state.eqSetBoss);
+    //console.log("Eq set effect boss damage and ied: ", this.state.eqSetBoss);
   };
 
   //Setting enemy Defense
@@ -2462,6 +2448,10 @@ class Counters extends Component {
   };
 
   iedFinalDmg = () => {
+    //newly added (to be done)
+    //const stats = { ...this.stats.statsWindow };
+
+    //to be removed
     const ied = this.statsIed();
 
     const def = this.state.enemyDef[0].value;
@@ -2470,36 +2460,31 @@ class Counters extends Component {
   };
 
   statsIed = () => {
-    const ied1 = this.state.iedFinal;
-    const ied2 = this.state.eqSetBoss.ied;
+    const ied1 = this.state.statsWindow.ied;
     var iedArray = [...this.state.totalWse.ied];
     iedArray.push(ied1);
-    iedArray.push(ied2);
 
-    const iedFinal = this.setIedCalculator(iedArray);
+    const iedFinal = this.calculateIed(iedArray);
     return iedFinal;
   };
 
   finalBoss = () => {
-    const boss =
-      this.state.total.boss +
-      this.state.eqSetBoss.boss +
-      this.state.totalWse.boss;
+    const boss = this.state.statsWindow.boss + this.state.totalWse.boss;
     return boss;
   };
 
   finalAtt = () => {
-    const att = this.state.total.att + this.state.totalWse.att;
+    const att = this.state.statsWindow.att + this.state.totalWse.att;
     return att;
   };
 
   finalMatt = () => {
-    const att = this.state.total.matt + this.state.totalWse.matt;
+    const att = this.state.statsWindow.matt + this.state.totalWse.matt;
     return att;
   };
 
   finalDmg = () => {
-    const att = this.state.total.damage + this.state.totalWse.damage;
+    const att = this.state.statsWindow.damage + this.state.totalWse.damage;
     return att;
   };
 
@@ -2514,36 +2499,31 @@ class Counters extends Component {
   };
 
   finalBoss2 = () => {
-    const boss =
-      this.state.total.boss +
-      this.state.eqSetBoss.boss +
-      this.state.totalWse2.boss;
+    const boss = this.state.statsWindow.boss + this.state.totalWse2.boss;
     return boss;
   };
 
   finalAtt2 = () => {
-    const att = this.state.total.att + this.state.totalWse2.att;
+    const att = this.state.statsWindow.att + this.state.totalWse2.att;
     return att;
   };
 
   finalMatt2 = () => {
-    const att = this.state.total.matt + this.state.totalWse2.matt;
+    const att = this.state.statsWindow.matt + this.state.totalWse2.matt;
     return att;
   };
 
   finalDmg2 = () => {
-    const att = this.state.total.damage + this.state.totalWse2.damage;
+    const att = this.state.statsWindow.damage + this.state.totalWse2.damage;
     return att;
   };
 
   statsIed2 = () => {
-    const ied1 = this.state.iedFinal;
-    const ied2 = this.state.eqSetBoss.ied;
+    const ied1 = this.state.statsWindow.ied;
     var iedArray = [...this.state.totalWse2.ied];
     iedArray.push(ied1);
-    iedArray.push(ied2);
 
-    const iedFinal = this.setIedCalculator(iedArray);
+    const iedFinal = this.calculateIed(iedArray);
     return iedFinal;
   };
 
@@ -2566,8 +2546,8 @@ class Counters extends Component {
 
   //To prevent NaN problem
   safeParseFloat = (value) => {
-    const value1 = parseFloat(value);
-    return isNaN(value1) ? 0 : value1;
+    const num = parseFloat(value);
+    return isNaN(num) ? 0 : num;
   };
 
   handleInputField = (value, option, option_main) => {
@@ -2599,7 +2579,7 @@ class Counters extends Component {
 
     inputs[index_main].field[index].value = new_value;
     this.setState({ inputs });
-    console.log(this.state.iedFill);
+    //console.log(this.state.iedFill);
   };
 
   handleInputFieldAtt = (value, option) => {
@@ -2616,6 +2596,7 @@ class Counters extends Component {
   };
 
   handleAugSoul = (selected) => {
+    const stats = { ...this.state.statsWindow };
     const inputs = [...this.state.augSoul];
     const ieds = [...this.state.ied];
     var optionOld = inputs[0].selected; // recording the old selected option
@@ -2657,13 +2638,16 @@ class Counters extends Component {
 
     inputs[0].selected = selected;
 
+    stats.ied = this.calculateIed(ieds);
+
+    this.setState({ statsWindow: stats });
     this.setState({ inputs });
     this.iedCalculator(ieds);
     this.setState({ ied: ieds });
   };
 
   handleWeaponFlame = (value, option) => {
-    const totals = this.state.total;
+    const stats = { ...this.state.statsWindow };
     const inputs = [...this.state.weaponFlame];
     const index = inputs[0].test.indexOf(option);
 
@@ -2673,13 +2657,13 @@ class Counters extends Component {
     switch (index) {
       //boss dmg
       case 0:
-        totals.boss -= old_value;
-        totals.boss += new_value;
+        stats.boss -= old_value;
+        stats.boss += new_value;
         break;
       //damage
       case 1:
-        totals.damage -= old_value;
-        totals.damage += new_value;
+        stats.damage -= old_value;
+        stats.damage += new_value;
         break;
       default:
         break;
@@ -2687,8 +2671,44 @@ class Counters extends Component {
 
     inputs[0].test[index].value = new_value;
 
-    this.setState({ totals });
+    this.setState({ statsWindow: stats });
     this.setState({ inputs });
+  };
+
+  handleDuplicate = () => {
+    const main = [...this.state.wseMain];
+    const add = [...this.state.wseAdd];
+    const main2 = [...this.state.wseMain2];
+    const add2 = [...this.state.wseAdd2];
+    const totalWse = { ...this.state.totalWse };
+    const totalWse2 = { ...this.state.totalWse2 };
+
+    //main pot
+    for (var i = 0; i < main.length; i++) {
+      main2[i].selected = main[i].selected;
+      for (var j = 0; j < main[i].test.length; j++) {
+        main2[i].test[j].selectedOption = main[i].test[j].selectedOption;
+      }
+    }
+
+    //add pot
+    for (i = 0; i < add.length; i++) {
+      add2[i].selected = add[i].selected;
+      for (j = 0; j < add[i].test.length; j++) {
+        add2[i].test[j].selectedOption = add[i].test[j].selectedOption;
+      }
+    }
+
+    //must be done like this to prevent it from copying the ied array
+    totalWse2.boss = totalWse.boss;
+    totalWse2.att = totalWse.att;
+    totalWse2.matt = totalWse.matt;
+    totalWse2.damage = totalWse.damage;
+    totalWse2.ied = [...totalWse.ied];
+
+    this.setState({ totalWse2 });
+    this.setState({ main2 });
+    this.setState({ add2 });
   };
 
   handleResult = () => {
@@ -2717,6 +2737,13 @@ class Counters extends Component {
     return [display, resultsClass];
   };
 
+  handleBD = () => {
+    const skills = [...this.state.skills];
+    skills[0].checked = !skills[0].checked;
+
+    this.setState({ skills: skills });
+  };
+
   render() {
     return (
       <div className="table_overall">
@@ -2724,13 +2751,11 @@ class Counters extends Component {
           {this.state.skills.map((skills) => (
             <Counter
               key={skills.id}
-              onCheckbox={this.handleCheckbox}
-              onClick={this.handleClick}
+              onChange={this.handleCheckbox}
               skills={skills}
             />
           ))}
         </div>
-
         <div>
           <div className="equip_table">
             {this.state.equipment.map((eq) => (
@@ -2773,7 +2798,6 @@ class Counters extends Component {
             ))}
           </div>
         </div>
-
         <div className="input_main_table">
           <div className="input_field">
             <p className="table_header">Hyper Stats</p>
@@ -2863,7 +2887,6 @@ class Counters extends Component {
             ))}
           </div>
         </div>
-
         {/* For additional inputs */}
         <div className="table-sub">
           <div className="input-field-2">
@@ -2928,6 +2951,7 @@ class Counters extends Component {
               <p className="image-label-boss-def">
                 Def %: {this.state.enemyDef[0].value}
               </p>
+              <p className="image-label-test">{this.state.statsWindow.ied}</p>
               <p className="image-label-ied">{this.statsIed().toFixed(2)}</p>
               <p className="image-label-att">Att %: {this.finalAtt()}</p>
               <p className="image-label-matt">Matt %: {this.finalMatt()}</p>
@@ -2993,6 +3017,10 @@ class Counters extends Component {
             </div>
           </div>
         </div>
+        <button className="button-duplicate" onClick={this.handleDuplicate}>
+          Duplicate WSE
+        </button>
+        {/* <button onClick={this.handleBD}>Click me pls</button> */}
         <div className={this.handleResult()[1]}>{this.handleResult()[0]}</div>
       </div>
     );

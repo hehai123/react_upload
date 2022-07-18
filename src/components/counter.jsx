@@ -14,7 +14,8 @@ class Counter extends Component {
         <input
           className="checkbox"
           type="checkbox"
-          onClick={() => this.props.onCheckbox(this.props.skills)}
+          checked={this.props.skills.checked}
+          onChange={() => this.props.onChange(this.props.skills)}
         />
       </div>
     );

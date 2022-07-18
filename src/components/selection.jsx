@@ -7,6 +7,7 @@ class Selection extends Component {
       <div className="selection-row-wse">
         <label className="selection_label">{this.props.option.lineDesc}</label>
         <select
+          value={this.props.option.selectedOption}
           className="selection_option"
           onChange={(e) =>
             this.props.onSelect(e.target.value, this.props.option)
