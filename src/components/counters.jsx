@@ -689,7 +689,7 @@ class Counters extends Component {
       },
       {
         id: 13,
-        desc: "Damage +8%, Boss damage + 4%",
+        desc: "Damage +8%, Boss damage +4%",
         imageSrc: require("../images/Noblesse.png"),
         imageDesc: "Noblesse",
         checked: false,
@@ -2747,16 +2747,21 @@ class Counters extends Component {
   render() {
     return (
       <div className="table_overall">
-        <div className="skill_table">
-          {this.state.skills.map((skills) => (
-            <Counter
-              key={skills.id}
-              onChange={this.handleCheckbox}
-              skills={skills}
-            />
-          ))}
-        </div>
         <div>
+          <label className="header">Link Skills</label>
+          <div className="skill_table">
+            {this.state.skills.map((skills) => (
+              <Counter
+                key={skills.id}
+                onChange={this.handleCheckbox}
+                skills={skills}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <label className="header">Equip Set</label>
           <div className="equip_table">
             {this.state.equipment.map((eq) => (
               <Equipment key={eq.id} eq={eq} onSelect={this.handleEquip} />
@@ -2765,148 +2770,176 @@ class Counters extends Component {
               <BossSet key={set.id} set={set} onSelect={this.handleSet} />
             ))}
           </div>
+        </div>
 
-          {/* Weapon Flame Stats */}
+        <div>
+          <label className="header">Others</label>
+          <div className="input_main_table">
+            <div className="input_field">
+              <p className="table_header">Union Stats</p>
+              {this.state.union.map((union) => (
+                <Hyper
+                  key={union.id}
+                  hyper={union}
+                  onInput={this.handleInput}
+                />
+              ))}
+            </div>
+            <div className="input_field">
+              <p className="table_header">
+                Guild Skills
+                <img
+                  className="icon_image"
+                  src={require("../images/Boss Slayers.png")}
+                  alt=""
+                  title="Guild Skills"
+                />
+              </p>
+              {this.state.guildSkills.map((skill) => (
+                <Hyper
+                  key={skill.id}
+                  hyper={skill}
+                  onInput={this.handleInput}
+                />
+              ))}
+            </div>
 
-          {this.state.weaponFlame.map((flame) => (
-            <TableTest
-              key={flame.id} // check this pls
-              main={flame}
-              onChange={this.handleWeaponFlame}
+            <div className="input_field">
+              <p className="table_header">
+                Potions
+                <img
+                  className="icon_image"
+                  src={require("../images/Sparkling Red Star Potion.png")}
+                  alt=""
+                  title="Potions"
+                />
+              </p>
+              {this.state.potion.map((pot) => (
+                <Hyper key={pot.id} hyper={pot} onInput={this.handleInput} />
+              ))}
+            </div>
+
+            <div className="input_field">
+              <p className="table_header">Hyper Stats</p>
+              {this.state.hyper.map((hyper) => (
+                <Hyper
+                  key={hyper.id}
+                  hyper={hyper}
+                  onInput={this.handleInput}
+                />
+              ))}
+            </div>
+
+            <div className="input_field">
+              <p className="table_header">Monster Life</p>
+              {this.state.monsterLife.map((hyper) => (
+                <Hyper
+                  key={hyper.id}
+                  hyper={hyper}
+                  onInput={this.handleInput}
+                />
+              ))}
+            </div>
+
+            {/* Weapon Flame Stats */}
+            {this.state.weaponFlame.map((flame) => (
+              <TableTest
+                key={flame.id} // check this pls
+                main={flame}
+                onChange={this.handleWeaponFlame}
+              />
+            ))}
+
+            <div className="input_field">
+              <p className="table_header">
+                Title
+                <img
+                  className="icon_image"
+                  src={require("../images/Title.png")}
+                  alt=""
+                  title="Title"
+                />
+              </p>
+              {this.state.title.map((title) => (
+                <Hyper
+                  key={title.id}
+                  hyper={title}
+                  onInput={this.handleInput}
+                />
+              ))}
+            </div>
+
+            {/* For Aug Soul */}
+            <div className="input-field-2">
+              {this.state.augSoul.map((soul) => (
+                <TableMain
+                  key={soul.id} // check this pls
+                  main={soul}
+                  onChange={this.handleAugSoul}
+                />
+              ))}
+            </div>
+
+            <div className="input_field">
+              <p className="table_header">
+                Traits
+                <img
+                  className="icon_image"
+                  src={require("../images/Premium Hair Wax.png")}
+                  alt=""
+                  title="Traits"
+                />
+              </p>
+              {this.state.trait.map((trait) => (
+                <Hyper
+                  key={trait.id}
+                  hyper={trait}
+                  onInput={this.handleInput}
+                />
+              ))}
+            </div>
+
+            <div className="input_field">
+              <p className="table_header">Inner Ability</p>
+              {this.state.inner.map((inner) => (
+                <Hyper
+                  key={inner.id}
+                  hyper={inner}
+                  onInput={this.handleInput}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* For additional inputs */}
+        <div className="table-sub">
+          {this.state.iedFill.map((input) => (
+            <Table2
+              key={input.id} // check this pls
+              input={input}
+              onChange={this.handleInputField}
             />
           ))}
 
-          {/* For Aug Soul */}
-          <div className="input-field-2">
-            {this.state.augSoul.map((soul) => (
-              <TableMain
-                key={soul.id} // check this pls
-                main={soul}
-                onChange={this.handleAugSoul}
-              />
-            ))}
-          </div>
-
-          {/* For enemy defense */}
-          <div className="input-field-2">
-            {this.state.enemyDef.map((input) => (
-              <EnemyDef
-                key={input.id} // check this pls
-                input={input}
-                onChange={this.handleEnemyDef}
-              />
-            ))}
-          </div>
+          {this.state.additionalWaMa.map((input) => (
+            <Table3
+              key={input.id} // check this pls
+              input={input}
+              onInput={this.handleInputFieldAtt}
+            />
+          ))}
         </div>
-        <div className="input_main_table">
-          <div className="input_field">
-            <p className="table_header">Hyper Stats</p>
-            {this.state.hyper.map((hyper) => (
-              <Hyper key={hyper.id} hyper={hyper} onInput={this.handleInput} />
-            ))}
-          </div>
 
-          <div className="input_field">
-            <p className="table_header">Monster Life</p>
-            {this.state.monsterLife.map((hyper) => (
-              <Hyper key={hyper.id} hyper={hyper} onInput={this.handleInput} />
-            ))}
-          </div>
-
-          <div className="input_field">
-            <p className="table_header">
-              Guild Skills
-              <img
-                className="icon_image"
-                src={require("../images/Boss Slayers.png")}
-                alt=""
-                title="Guild Skills"
-              />
-            </p>
-            {this.state.guildSkills.map((skill) => (
-              <Hyper key={skill.id} hyper={skill} onInput={this.handleInput} />
-            ))}
-          </div>
-
-          <div className="input_field">
-            <p className="table_header">
-              Potions
-              <img
-                className="icon_image"
-                src={require("../images/Sparkling Red Star Potion.png")}
-                alt=""
-                title="Potions"
-              />
-            </p>
-            {this.state.potion.map((pot) => (
-              <Hyper key={pot.id} hyper={pot} onInput={this.handleInput} />
-            ))}
-          </div>
-
-          <div className="input_field">
-            <p className="table_header">Union Stats</p>
-            {this.state.union.map((union) => (
-              <Hyper key={union.id} hyper={union} onInput={this.handleInput} />
-            ))}
-          </div>
-
-          <div className="input_field">
-            <p className="table_header">
-              Title
-              <img
-                className="icon_image"
-                src={require("../images/Title.png")}
-                alt=""
-                title="Title"
-              />
-            </p>
-            {this.state.title.map((title) => (
-              <Hyper key={title.id} hyper={title} onInput={this.handleInput} />
-            ))}
-          </div>
-
-          <div className="input_field">
-            <p className="table_header">
-              Traits
-              <img
-                className="icon_image"
-                src={require("../images/Premium Hair Wax.png")}
-                alt=""
-                title="Traits"
-              />
-            </p>
-            {this.state.trait.map((trait) => (
-              <Hyper key={trait.id} hyper={trait} onInput={this.handleInput} />
-            ))}
-          </div>
-
-          <div className="input_field">
-            <p className="table_header">Inner Ability</p>
-            {this.state.inner.map((inner) => (
-              <Hyper key={inner.id} hyper={inner} onInput={this.handleInput} />
-            ))}
-          </div>
-        </div>
-        {/* For additional inputs */}
-        <div className="table-sub">
-          <div className="input-field-2">
-            {this.state.iedFill.map((input) => (
-              <Table2
-                key={input.id} // check this pls
-                input={input}
-                onChange={this.handleInputField}
-              />
-            ))}
-          </div>
-          <div>
-            {this.state.additionalWaMa.map((input) => (
-              <Table3
-                key={input.id} // check this pls
-                input={input}
-                onInput={this.handleInputFieldAtt}
-              />
-            ))}
-          </div>
+        {/* For enemy defense */}
+        <div className="div-defense">
+          {this.state.enemyDef.map((input) => (
+            <EnemyDef
+              key={input.id} // check this pls
+              input={input}
+              onChange={this.handleEnemyDef}
+            />
+          ))}
         </div>
 
         <div className="div-wse-compare">

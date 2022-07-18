@@ -14,23 +14,34 @@ code {
 
 .table_overall {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 30px;
 }
 
 .skill_table {
-  width: 250px;
+  outline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+  margin: auto;
+  justify-content: space-between;
 }
 
 .equip_table {
-  width: 250px;
+  outline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+  margin: auto;
+  justify-content: space-between;
 }
 
 .counter_table {
   display: flex;
   align-items: center;
-  justify-content:space-between;
+  justify-content: space-between;
+  width: 280px;
+  height: 59px;
 }
 
 .counter_table:nth-child(odd) {
@@ -86,6 +97,10 @@ code {
   margin: 10px 5px;
 }
 
+.div-defense {
+  margin: auto;
+}
+
 .table_header {
   display: flex;
   min-height: 40px;
@@ -98,10 +113,13 @@ code {
 }
 
 .input_main_table {
-  max-width: 420px;
+  width: 60%;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
+  margin: auto;
+  outline: auto;
+  justify-content: space-evenly;
 }
 
 .input_table {
@@ -125,6 +143,7 @@ code {
   background-color: #fbf8cc;
 }
 
+
 .div-wse-compare {
   display: flex;
   flex-wrap: wrap;
@@ -135,7 +154,7 @@ code {
 .div-wse-compare-table {
   display: flex;
   flex-direction: column;
-  padding: 0px 100px 50px 100px;
+  padding: 0px 20px 0px 20px;
 }
 
 .div-wse-2-tables {
@@ -145,7 +164,7 @@ code {
 
 .counters-div {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-self: flex-start;
 }
@@ -349,6 +368,7 @@ code {
   font-weight: bold;
 }
 
+/* to be removed */
 .table2 {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -362,40 +382,61 @@ code {
   padding: 10px;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0px;
+  margin: auto;
+  margin-top: 20px;
+  background-color: #faedcd;
+  width: 60%;
+}
+
 .table-sub {
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
   gap: 30px;
+  margin: auto;
+  outline: auto;
+  width: 60%;
+  justify-content: space-around;
 }
 
 .div-results-right {
+  width: 60%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 5px 0px;
   margin-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
   background-color: #ffc300;
 }
 
 .div-results-same {
-  width: 100%;
+  width: 60%;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 5px 0px;
   margin-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
   background-color: #e0fbfc;
 }
 
 .div-results-left {
-  width: 100%;
+  width: 60%;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 5px 0px;
   margin-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
   background-color: #b9fbc0;
 }
 

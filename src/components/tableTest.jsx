@@ -5,7 +5,7 @@ import Input from "./input";
 class TableTest extends Component {
   render() {
     return (
-      <div className="table2">
+      <div className="input_field">
         <p className="table_header">
           {this.props.main.desc}
           <img

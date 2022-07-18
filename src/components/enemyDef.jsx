@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class EnemyDef extends Component {
   render() {
     return (
-      <div className="table2">
+      <div className="input_field">
         <p className="table_header">{this.props.input.desc}</p>
         <div className="input_table">
           <label>{this.props.input.desc1}</label>
