@@ -302,6 +302,57 @@ code {
   width: fit-content;
 }
 
+.stats-details{
+  outline: auto;
+  border-radius: 10px;
+  margin: 20px;
+  width: 280px;
+  /* padding: 0.5rem; */
+}
+
+.stats-table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stats-header-1{
+  font-size: larger;
+  font-weight: bold;
+  /* background-color: #D4F1F4; */
+  background-color: #b9fbc0;
+  justify-content: center;
+  margin: 0px;
+  padding: 12px 0px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.stats-header-2{
+  font-size: larger;
+  font-weight: bold;
+  /* background-color: #D4F1F4; */
+  background-color: #ffc300;
+  justify-content: center;
+  margin: 0px;
+  padding: 12px 0px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.th,
+.td {
+  border: 0;
+  font-weight: normal;
+  text-align: left;
+  padding: 0.6rem 1.5rem;
+  white-space: nowrap;
+  border-top: 1px solid black;
+}
+.td:last-child {
+  text-align: right;
+}
+
+
+
 .image-label-test {
   position: absolute;
   top: 78px;

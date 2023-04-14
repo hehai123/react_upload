@@ -19,9 +19,13 @@ class Counters extends Component {
     eqSetBoss: { boss: 0, ied: 0 },
     ied: [],
     iedFinal: 0,
-    enemyDef: [
-      { id: 1, desc: "Monster defense", max: 380, value: 0, desc1: "Defense" },
-    ],
+    enemyDef: {
+      id: 1,
+      desc: "Monster defense",
+      max: 380,
+      value: 0,
+      label: "Defense",
+    },
     potion: [
       {
         id: 1,
@@ -2442,9 +2446,7 @@ class Counters extends Component {
 
   //Setting enemy Defense
   handleEnemyDef = (def) => {
-    var inputs = [...this.state.enemyDef];
-    inputs[0].value = this.safeParseFloat(def);
-    this.setState({ inputs });
+    this.setState({ enemyDef: { ...this.state.enemyDef, value: def } });
   };
 
   iedFinalDmg = () => {
@@ -2454,7 +2456,7 @@ class Counters extends Component {
     //to be removed
     const ied = this.statsIed();
 
-    const def = this.state.enemyDef[0].value;
+    const def = this.state.enemyDef.value;
     const finalDmg = 100 - def * (1 - ied / 100);
     return finalDmg > 0 ? finalDmg.toFixed(2) : 0;
   };
@@ -2529,7 +2531,8 @@ class Counters extends Component {
 
   iedFinalDmg2 = () => {
     const ied = this.statsIed2();
-    const def = this.state.enemyDef[0].value;
+
+    const def = this.state.enemyDef.value;
     const finalDmg = 100 - def * (1 - ied / 100);
     return finalDmg > 0 ? finalDmg.toFixed(2) : 0;
   };
@@ -2933,13 +2936,13 @@ class Counters extends Component {
 
         {/* For enemy defense */}
         <div className="div-defense">
-          {this.state.enemyDef.map((input) => (
+          {
             <EnemyDef
-              key={input.id} // check this pls
-              input={input}
+              key={this.state.enemyDef.id}
+              input={this.state.enemyDef}
               onChange={this.handleEnemyDef}
             />
-          ))}
+          }
         </div>
 
         <div className="div-wse-compare">
@@ -2974,26 +2977,37 @@ class Counters extends Component {
             </div>
 
             <div className="stats_div">
-              <img
-                src={require("../images/stat background2.png")}
-                alt=""
-                title="Stats table"
-              />
-              <p className="image-label-boss">{this.finalBoss()}</p>
-              <p className="image-label-damage">{this.finalDmg()}</p>
-              <p className="image-label-boss-def">
-                Def %: {this.state.enemyDef[0].value}
-              </p>
-              <p className="image-label-test">{this.state.statsWindow.ied}</p>
-              <p className="image-label-ied">{this.statsIed().toFixed(2)}</p>
-              <p className="image-label-att">Att %: {this.finalAtt()}</p>
-              <p className="image-label-matt">Matt %: {this.finalMatt()}</p>
-              <p className="image-label-iedFinal">
-                Final dmg % after IED: {this.iedFinalDmg()}
-              </p>
-              <p className="image-label-final">
-                Final final %: {this.finalFinal()}
-              </p>
+              <section className="stats-details">
+                <p className="stats-header-1">Stats Details</p>
+                <table className="stats-table">
+                  <tbody>
+                    <tr className="tr">
+                      <th className="th">Attack %</th>
+                      <td className="td">{this.finalAtt()}</td>
+                    </tr>
+                    <tr className="tr">
+                      <th className="th">Magic Attack %</th>
+                      <td className="td">{this.finalAtt()}</td>
+                    </tr>
+                    <tr className="tr">
+                      <th className="th">Damage %</th>
+                      <td className="td">{this.finalDmg()}</td>
+                    </tr>
+                    <tr className="tr">
+                      <th className="th">Boss Damage %</th>
+                      <td className="td">{this.finalBoss()}</td>
+                    </tr>
+                    <tr className="tr">
+                      <th className="th">Ignore Def %</th>
+                      <td className="td">{this.state.enemyDef.value}</td>
+                    </tr>
+                    <tr className="tr">
+                      <th className="th">Final Score</th>
+                      <td className="td">{this.finalFinal()}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
             </div>
           </div>
 
@@ -3028,25 +3042,37 @@ class Counters extends Component {
             </div>
 
             <div className="stats_div">
-              <img
-                src={require("../images/stat background2.png")}
-                alt=""
-                title="Stats table"
-              />
-              <p className="image-label-boss">{this.finalBoss2()}</p>
-              <p className="image-label-damage">{this.finalDmg2()}</p>
-              <p className="image-label-boss-def">
-                Def %: {this.state.enemyDef[0].value}
-              </p>
-              <p className="image-label-ied">{this.statsIed2().toFixed(2)}</p>
-              <p className="image-label-att">Att %: {this.finalAtt2()}</p>
-              <p className="image-label-matt">Matt %: {this.finalMatt2()}</p>
-              <p className="image-label-iedFinal">
-                Final dmg % after IED: {this.iedFinalDmg2()}
-              </p>
-              <p className="image-label-final">
-                Final final %: {this.finalFinal2()}
-              </p>
+              <section className="stats-details">
+                <p className="stats-header-2">Stats Details</p>
+                <table className="stats-table">
+                  <tbody>
+                    <tr className="tr">
+                      <th className="th">Attack %</th>
+                      <td className="td">{this.finalAtt()}</td>
+                    </tr>
+                    <tr className="tr">
+                      <th className="th">Magic Attack %</th>
+                      <td className="td">{this.finalAtt()}</td>
+                    </tr>
+                    <tr className="tr">
+                      <th className="th">Damage %</th>
+                      <td className="td">{this.finalDmg()}</td>
+                    </tr>
+                    <tr className="tr">
+                      <th className="th">Boss Damage %</th>
+                      <td className="td">{this.finalBoss()}</td>
+                    </tr>
+                    <tr className="tr">
+                      <th className="th">Ignore Def %</th>
+                      <td className="td">{this.state.enemyDef.value}</td>
+                    </tr>
+                    <tr className="tr">
+                      <th className="th">Final Score</th>
+                      <td className="td">{this.finalFinal()}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
             </div>
           </div>
         </div>

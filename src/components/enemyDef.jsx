@@ -6,7 +6,7 @@ class EnemyDef extends Component {
       <div className="input_field">
         <p className="table_header">{this.props.input.desc}</p>
         <div className="input_table">
-          <label>{this.props.input.desc1}</label>
+          <label>{this.props.input.label}</label>
           <input
             className="input"
             type="Number"
