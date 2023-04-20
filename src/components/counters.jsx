@@ -9,6 +9,7 @@ import Table3 from "./table3";
 import EnemyDef from "./enemyDef";
 import TableMain from "./tableMain";
 import TableTest from "./tableTest";
+import StatsDetails from "./StatsDetails";
 
 class Counters extends Component {
   state = {
@@ -18,13 +19,48 @@ class Counters extends Component {
     totalWse2: { boss: 0, damage: 0, att: 0, matt: 0, ied: [] },
     eqSetBoss: { boss: 0, ied: 0 },
     ied: [],
-    iedFinal: 0,
     enemyDef: {
       id: 1,
       desc: "Monster defense",
-      max: 380,
+      max: 500,
       value: 0,
       label: "Defense",
+    },
+    statsDetails: {
+      boss: 0,
+      damage: 0,
+      att: 0,
+      matt: 0,
+      ied: 0,
+      final: 100,
+    },
+    statsDetailsCompare: {
+      boss: 0,
+      damage: 0,
+      att: 0,
+      matt: 0,
+      ied: 0,
+      final: 100,
+    },
+    statsDisplay: [
+      {
+        id: 1,
+        desc: "Attack %",
+        name: "att",
+      },
+      { id: 2, desc: "Magic Attack %", name: "matt" },
+      {
+        id: 3,
+        desc: "Damage %",
+        name: "damage",
+      },
+      { id: 4, desc: "Boss Damage %", name: "boss" },
+      { id: 5, desc: "Ignore Def %", name: "ied" },
+      { id: 6, desc: "Final Score", name: "final" },
+    ],
+    resultsDisplay: {
+      display: "Your WSE combinations have the same final damage output.",
+      class: "div-results-same",
     },
     potion: [
       {
@@ -1855,7 +1891,7 @@ class Counters extends Component {
         ],
       },
     ],
-    iedFill: [
+    additionalStats: [
       {
         id: 1,
         desc: "Additional IED lines",
@@ -1892,52 +1928,12 @@ class Counters extends Component {
     ],
   };
 
-  iedCalculator = (array) => {
-    //const stats = this.state.statsWindow;
-    const arr = array;
-    const size = arr.length;
-    var start = 0;
-    if (size > 0) {
-      start = arr[0];
-    }
-    for (var i = 1; i < size; i++) {
-      start = (100 - start) * (arr[i] / 100) + start;
-    }
-
-    //stats.ied = start;
-
-    //this.setState({ stats });
-    this.setState({ iedFinal: start });
-
-    //console.log(start.toFixed(2));
-  };
-
+  // Calculates total IED value from an array of ieds. Coded by ChatGPT
   calculateIed = (array) => {
-    const size = array.length;
-    var start = 0;
-
-    //shorten this part
-    if (size > 0) {
-      start = array[0];
-    }
-    for (var i = 1; i < size; i++) {
-      start = (100 - start) * (array[i] / 100) + start;
-    }
-
-    return start;
+    return array.reduce((total, currentValue) => {
+      return (100 - total) * (currentValue / 100) + total;
+    }, 0);
   };
-
-  // handleClick = (skill) => {
-  //   const skills = [...this.state.skills]; // clone a copy
-  //   const index = skills.indexOf(skill); // getting the index
-  //   skills[index] = { ...skill }; // making a copy
-  //   const checked = skills[index].checked;
-  //   if (checked === false) {
-  //     skills[index].checked = true;
-  //   } else skills[index].checked = false;
-  //   this.setState({ skills });
-  //   console.log(skill.checked);
-  // };
 
   handleCheckbox = (skill) => {
     const stats = { ...this.state.statsWindow };
@@ -1964,25 +1960,24 @@ class Counters extends Component {
     }
     skills[index].checked = !skills[index].checked;
 
-    this.setState({ ied: ieds });
-    this.setState({ skills });
-    this.setState({ statsWindow: stats });
-
-    console.log(this.state.statsWindow);
+    this.setState(
+      {
+        ied: ieds,
+        skills: skills,
+        statsWindow: stats,
+      },
+      this.handleAllFinalStats
+    );
   };
 
-  //For hyper stats etc
+  //For hyper stats etc (ChatGPT)
   handleInput = (value, input) => {
     const varName = input.name;
     const inputs = [...this.state[varName]];
     const index = inputs.indexOf(input);
     const stats = { ...this.state.statsWindow }; // sum of all boss, dmg ,att etc
     const max = inputs[index].max;
-
-    var new_value = this.safeParseFloat(value);
-    if (new_value > max) {
-      new_value = max;
-    }
+    const new_value = Math.min(parseFloat(value), max);
 
     switch (inputs[index].type) {
       case "Ied":
@@ -1999,22 +1994,12 @@ class Counters extends Component {
         stats.ied = this.calculateIed(ieds);
         break;
       case "Boss":
-        const oldBoss = inputs[index].value;
-        if (oldBoss !== 0) {
-          stats.boss -= oldBoss;
-        }
-        if (new_value !== 0) {
-          stats.boss += new_value;
-        }
+        stats.boss -= inputs[index].value;
+        stats.boss += new_value;
         break;
       case "Damage":
-        const oldDmg = inputs[index].value;
-        if (oldDmg !== 0) {
-          stats.damage -= oldDmg;
-        }
-        if (new_value !== 0) {
-          stats.damage += new_value;
-        }
+        stats.damage -= inputs[index].value;
+        stats.damage += new_value;
         break;
       default:
         break;
@@ -2022,20 +2007,33 @@ class Counters extends Component {
 
     inputs[index].value = new_value;
 
-    this.setState({ statsWindow: stats });
-    this.setState({ inputs }); // what is going on here
-    console.log(this.state.statsWindow);
+    this.setState(
+      {
+        statsWindow: stats,
+        inputs: inputs,
+      },
+      this.handleAllFinalStats
+    );
   };
 
   handleIedArray = (old_ied, new_ied) => {
     const stats = { ...this.state.statsWindow };
     const ieds = [...this.state.ied];
-    if (old_ied !== 0) ieds.splice(ieds.indexOf(old_ied), 1);
-    if (new_ied !== 0) ieds.push(new_ied);
+
+    if (old_ied !== 0) {
+      const index = ieds.indexOf(old_ied);
+      if (index !== -1) {
+        ieds.splice(index, 1);
+      }
+    }
+
+    if (new_ied !== 0) {
+      ieds.push(new_ied);
+    }
 
     stats.ied = this.calculateIed(ieds);
 
-    this.setState({ statsWindow: stats });
+    this.setState({ statsWindow: stats }, this.handleAllFinalStats);
     this.setState({ ied: ieds });
   };
 
@@ -2044,7 +2042,7 @@ class Counters extends Component {
     const stats = { ...this.state.statsWindow };
     stats.boss -= old_boss;
     stats.boss += new_boss;
-    this.setState({ statsWindow: stats });
+    this.setState({ statsWindow: stats }, this.handleAllFinalStats);
   };
 
   //Two in 1 function
@@ -2052,7 +2050,7 @@ class Counters extends Component {
     const stats = { ...this.state.statsWindow };
     stats.damage -= old_dmg;
     stats.damage += new_dmg;
-    this.setState({ statsWindow: stats });
+    this.setState({ statsWindow: stats }, this.handleAllFinalStats);
   };
 
   //Two in 1 function
@@ -2060,104 +2058,104 @@ class Counters extends Component {
     const stats = { ...this.state.statsWindow };
     stats.att -= old_att;
     stats.att += new_att;
-    this.setState({ statsWindow: stats });
+    this.setState({ statsWindow: stats }, this.handleAllFinalStats);
   };
 
   addBoss = (value) => {
     const stats = { ...this.state.statsWindow };
     stats.boss += value;
-    this.setState({ statsWindow: stats });
+    this.setState({ statsWindow: stats }, this.handleAllFinalStats);
   };
 
   subBoss = (value) => {
     const stats = { ...this.state.statsWindow };
     stats.boss -= value;
-    this.setState({ statsWindow: stats });
+    this.setState({ statsWindow: stats }, this.handleAllFinalStats);
   };
 
   addDamage = (value) => {
     const stats = { ...this.state.statsWindow };
     stats.damage += value;
-    this.setState({ statsWindow: stats });
+    this.setState({ statsWindow: stats }, this.handleAllFinalStats);
   };
 
   subDamage = (value) => {
     const stats = { ...this.state.statsWindow };
     stats.damage -= value;
-    this.setState({ statsWindow: stats });
+    this.setState({ statsWindow: stats }, this.handleAllFinalStats);
   };
 
   addAtt = (value) => {
     const stats = { ...this.state.statsWindow };
     stats.att += value;
-    this.setState({ statsWindow: stats });
+    this.setState({ statsWindow: stats }, this.handleAllFinalStats);
   };
 
   subAtt = (value) => {
     const stats = { ...this.state.statsWindow };
     stats.att -= value;
-    this.setState({ statsWindow: stats });
+    this.setState({ statsWindow: stats }, this.handleAllFinalStats);
   };
 
   addMatt = (value) => {
     const stats = { ...this.state.statsWindow };
     stats.matt += value;
-    this.setState({ statsWindow: stats });
+    this.setState({ statsWindow: stats }, this.handleAllFinalStats);
   };
 
   subMatt = (value) => {
     const stats = { ...this.state.statsWindow };
     stats.matt -= value;
-    this.setState({ statsWindow: stats });
+    this.setState({ statsWindow: stats }, this.handleAllFinalStats);
   };
 
   //for wse
   addWseBoss = (wse, value) => {
     const inputs = this.state[wse];
     inputs.boss += value;
-    this.setState({ inputs });
+    this.setState({ inputs }, this.handleAllFinalStats);
   };
 
   subWseBoss = (wse, value) => {
     const inputs = this.state[wse];
     inputs.boss -= value;
-    this.setState({ inputs });
+    this.setState({ inputs }, this.handleAllFinalStats);
   };
 
   addWseDmg = (wse, value) => {
     const inputs = this.state[wse];
     inputs.damage += value;
-    this.setState({ inputs });
+    this.setState({ inputs }, this.handleAllFinalStats);
   };
 
   subWseDmg = (wse, value) => {
     const inputs = this.state[wse];
     inputs.damage -= value;
-    this.setState({ inputs });
+    this.setState({ inputs }, this.handleAllFinalStats);
   };
 
   addWseAtt = (wse, value) => {
     const inputs = this.state[wse];
     inputs.att += value;
-    this.setState({ inputs });
+    this.setState({ inputs }, this.handleAllFinalStats);
   };
 
   subWseAtt = (wse, value) => {
     const inputs = this.state[wse];
     inputs.att -= value;
-    this.setState({ inputs });
+    this.setState({ inputs }, this.handleAllFinalStats);
   };
 
   addWseMatt = (wse, value) => {
     const inputs = this.state[wse];
     inputs.matt += value;
-    this.setState({ inputs });
+    this.setState({ inputs }, this.handleAllFinalStats);
   };
 
   subWseMatt = (wse, value) => {
     const inputs = this.state[wse];
     inputs.matt -= value;
-    this.setState({ inputs });
+    this.setState({ inputs }, this.handleAllFinalStats);
   };
 
   handleOption = (e, option, wse) => {
@@ -2177,7 +2175,6 @@ class Counters extends Component {
 
     const optionOld = inputs[index].selected[optionIndex]; // recording the old selected option
     const ieds = this.state[type2].ied;
-    //console.log(type2);
 
     const index2 = inputs[index].test.indexOf(option);
     inputs[index].test[index2].selectedOption = e;
@@ -2220,14 +2217,13 @@ class Counters extends Component {
       this.addWseDmg(type2, value_new);
     }
 
-    this.setState({ inputs });
+    this.setState({ inputs }, this.handleAllFinalStats);
   };
 
   adjustSet = (old, newer) => {
     const setNumbers = [...this.state.setNumber];
     var boss = 0;
     var ied = 0;
-    var ied_final = 0;
     var ied_arr = [];
 
     switch (old) {
@@ -2299,7 +2295,6 @@ class Counters extends Component {
         break;
       case "Monster":
         setNumbers[6]++;
-        console.log("Why");
         break;
       default:
         break;
@@ -2312,21 +2307,15 @@ class Counters extends Component {
       if (ied !== 0) ied_arr.push(ied);
     }
 
-    //console.log("ied", ied_arr);
-
-    ied_final = this.calculateIed(ied_arr);
-
     this.setState({ setNumber: setNumbers });
-    //console.log("setstate", this.state.setNumber);
-    return [boss, ied_final];
+    return [boss, this.calculateIed(ied_arr)];
   };
 
   handleEquip = (e, eq) => {
     const inputs = [...this.state.equipment];
     const stats = { ...this.state.statsWindow }; // sum of all boss, dmg ,att etc
-    var eqSetBosss = this.state.eqSetBoss;
+    var eqSetBosss = { ...this.state.eqSetBoss };
     const index = inputs.indexOf(eq); // index = 3 for weapon
-    //console.log("eq", eq);
     //two ieds 1) set effect 2) eq ied
     const ieds = [...this.state.ied];
     const eqSetIed_old = eqSetBosss.ied;
@@ -2371,7 +2360,7 @@ class Counters extends Component {
     //Set weapon boss damage
     //Hard coded for now
     if (index === 3) {
-      console.log(selectedOld, typeof e_value);
+      // console.log(selectedOld, typeof e_value);
       if (selectedOld === "None") stats.boss += 30;
       if (e_value === "None") stats.boss -= 30;
     }
@@ -2391,176 +2380,165 @@ class Counters extends Component {
     stats.boss += eqSetBoss_new;
     stats.ied = this.calculateIed(ieds);
 
-    this.setState({ eqSetBoss: eqSetBosss });
-    //console.log("Eq set effect boss damage and ied: ", this.state.eqSetBoss);
-    this.setState({ statsWindow: stats });
-    this.setState({ ied: ieds });
-    this.setState({ inputs });
-    //console.log("ied array: ", ieds);
+    this.setState(
+      {
+        eqSetBoss: eqSetBosss,
+        statsWindow: stats,
+        ied: ieds,
+        equipment: inputs,
+      },
+      this.handleAllFinalStats
+    );
+  };
+
+  handleAllFinalStats = () => {
+    this.handleFinalStats("actual");
+    this.handleFinalStats("compare");
+  };
+
+  handleFinalStats = (choice) => {
+    const statsWindow = { ...this.state.statsWindow };
+    let stats;
+    let totalWse;
+    switch (choice) {
+      case "actual":
+        stats = { ...this.state.statsDetails };
+        totalWse = { ...this.state.totalWse };
+        stats.att = statsWindow.att + totalWse.att;
+        stats.matt = statsWindow.matt + totalWse.matt;
+        stats.damage = statsWindow.damage + totalWse.damage;
+        stats.boss = statsWindow.boss + totalWse.boss;
+
+        this.setState({ statsDetails: stats }, () => {
+          this.handleFinalDamageOutput(choice);
+        });
+        break;
+      case "compare":
+        stats = { ...this.state.statsDetailsCompare };
+        totalWse = { ...this.state.totalWse2 };
+        stats.att = statsWindow.att + totalWse.att;
+        stats.matt = statsWindow.matt + totalWse.matt;
+        stats.damage = statsWindow.damage + totalWse.damage;
+        stats.boss = statsWindow.boss + totalWse.boss;
+
+        this.setState({ statsDetailsCompare: stats }, () => {
+          this.handleFinalDamageOutput(choice);
+        });
+        break;
+      default:
+        console.log("Wrong choice selected");
+        break;
+    }
+  };
+
+  handleFinalDamageOutput = (choice) => {
+    let stats;
+    const iedFinalDmg = this.iedFinalDmg(choice);
+
+    if (choice === "actual") {
+      stats = { ...this.state.statsDetails };
+    } else if (choice === "compare") {
+      stats = { ...this.state.statsDetailsCompare };
+    }
+    stats.ied = parseFloat(iedFinalDmg[1]);
+
+    const damage = stats.damage;
+    const boss = stats.boss;
+    const att = stats.att;
+    stats.final = parseFloat(
+      (
+        ((damage + boss + 100) * iedFinalDmg[0] * (att / 100 + 1)) /
+        100
+      ).toFixed(2)
+    );
+
+    this.setState(
+      choice === "actual"
+        ? { statsDetails: stats }
+        : { statsDetailsCompare: stats },
+      this.handleResult
+    );
   };
 
   handleSet = (option, setType) => {
-    var eqSetBosss = { ...this.state.eqSetBoss };
+    const eqSetBoss = { ...this.state.eqSetBoss };
+    const setEffect = [...this.state.setEffect][0];
     const inputs = [...this.state.bossSet];
-    const index = inputs.indexOf(setType); // index = 3 for weapon
+    const index = inputs.indexOf(setType) + 4; // 4 for dawn boss set, 5 for dark boss set
     const setNumbers = [...this.state.setNumber]; // Fafnir, Absolabs, Arcaneshade, Eternal, Dawn, Dark, Monster, Lucky item (7)
     const stats = { ...this.state.statsWindow };
     const ieds = [...this.state.ied];
+    const previousOption = setNumbers[index];
+    const newOption = parseInt(option);
+    const bossDamageChange =
+      setEffect[index][newOption].boss - setEffect[index][previousOption].boss;
 
-    setNumbers[index + 4] = parseInt(option);
+    setNumbers[index] = newOption;
 
-    const boss_old = eqSetBosss.boss;
-    const eqSetIed_old = eqSetBosss.ied;
+    eqSetBoss.boss += bossDamageChange;
+    stats.boss += bossDamageChange;
 
-    var boss = 0;
-    var ied = 0;
-    var ied_arr = [];
-    var eqSetIed_new = 0;
+    //Writen by ChatGPT. Loop through all index except for the last one
+    const iedArray = setNumbers.slice(0, -1).map((number, index) => {
+      return setEffect[index][number].ied;
+    });
 
-    // setNumber last element is for lucky item, don't need to check
-    for (var i = 0; i < setNumbers.length - 1; i++) {
-      boss += this.state.setEffect[0][i][setNumbers[i]].boss;
-      ied = this.state.setEffect[0][i][setNumbers[i]].ied;
-      if (ied !== 0) ied_arr.push(ied);
-    }
-    eqSetIed_new = this.calculateIed(ied_arr);
+    const eqSetNewIed = this.calculateIed(iedArray);
 
-    eqSetBosss.boss = boss;
-    eqSetBosss.ied = eqSetIed_new;
-
-    //newly added stuff
-    //setting stat windows
-    const iedIndex = ieds.indexOf(eqSetIed_old);
-    ieds.splice(iedIndex, 1);
-    ieds.push(eqSetIed_new);
+    ieds.splice(ieds.indexOf(eqSetBoss.ied), 1, eqSetNewIed);
     stats.ied = this.calculateIed(ieds);
+    eqSetBoss.ied = eqSetNewIed;
 
-    stats.boss -= boss_old;
-    stats.boss += boss;
-
-    this.setState({ statsWindow: stats });
-    this.setState({ setNumber: setNumbers });
-    this.setState({ eqSetBoss: eqSetBosss });
-    //console.log("Eq set effect boss damage and ied: ", this.state.eqSetBoss);
+    this.setState(
+      {
+        setNumber: setNumbers,
+        eqSetBoss: eqSetBoss,
+        ied: ieds,
+        statsWindow: stats,
+      },
+      this.handleAllFinalStats
+    );
   };
 
   //Setting enemy Defense
   handleEnemyDef = (def) => {
-    this.setState({ enemyDef: { ...this.state.enemyDef, value: def } });
+    this.setState({ enemyDef: { ...this.state.enemyDef, value: def } }, () => {
+      this.handleFinalDamageOutput("actual");
+      this.handleFinalDamageOutput("compare");
+    });
   };
 
-  iedFinalDmg = () => {
-    //newly added (to be done)
-    //const stats = { ...this.stats.statsWindow };
-
-    //to be removed
-    const ied = this.statsIed();
-
+  //Calculates final damage output
+  iedFinalDmg = (choice) => {
+    const ied = this.statsIed(choice);
     const def = this.state.enemyDef.value;
     const finalDmg = 100 - def * (1 - ied / 100);
-    return finalDmg > 0 ? finalDmg.toFixed(2) : 0;
+    return [finalDmg > 0 ? finalDmg.toFixed(2) : 0, ied.toFixed(2)];
   };
 
-  statsIed = () => {
-    const ied1 = this.state.statsWindow.ied;
-    var iedArray = [...this.state.totalWse.ied];
-    iedArray.push(ied1);
-
-    const iedFinal = this.calculateIed(iedArray);
-    return iedFinal;
-  };
-
-  finalBoss = () => {
-    const boss = this.state.statsWindow.boss + this.state.totalWse.boss;
-    return boss;
-  };
-
-  finalAtt = () => {
-    const att = this.state.statsWindow.att + this.state.totalWse.att;
-    return att;
-  };
-
-  finalMatt = () => {
-    const att = this.state.statsWindow.matt + this.state.totalWse.matt;
-    return att;
-  };
-
-  finalDmg = () => {
-    const att = this.state.statsWindow.damage + this.state.totalWse.damage;
-    return att;
-  };
-
-  finalFinal = () => {
-    const dmg = this.finalDmg();
-    const boss = this.finalBoss();
-    const att = this.finalAtt();
-    const iedFinalDmg = this.iedFinalDmg();
-    const finalFinal =
-      ((dmg + boss + 100) * iedFinalDmg * (att / 100 + 1)) / 100;
-    return finalFinal.toFixed(2);
-  };
-
-  finalBoss2 = () => {
-    const boss = this.state.statsWindow.boss + this.state.totalWse2.boss;
-    return boss;
-  };
-
-  finalAtt2 = () => {
-    const att = this.state.statsWindow.att + this.state.totalWse2.att;
-    return att;
-  };
-
-  finalMatt2 = () => {
-    const att = this.state.statsWindow.matt + this.state.totalWse2.matt;
-    return att;
-  };
-
-  finalDmg2 = () => {
-    const att = this.state.statsWindow.damage + this.state.totalWse2.damage;
-    return att;
-  };
-
-  statsIed2 = () => {
-    const ied1 = this.state.statsWindow.ied;
-    var iedArray = [...this.state.totalWse2.ied];
-    iedArray.push(ied1);
-
-    const iedFinal = this.calculateIed(iedArray);
-    return iedFinal;
-  };
-
-  iedFinalDmg2 = () => {
-    const ied = this.statsIed2();
-
-    const def = this.state.enemyDef.value;
-    const finalDmg = 100 - def * (1 - ied / 100);
-    return finalDmg > 0 ? finalDmg.toFixed(2) : 0;
-  };
-
-  finalFinal2 = () => {
-    const dmg = this.finalDmg2();
-    const boss = this.finalBoss2();
-    const att = this.finalAtt2();
-    const iedFinalDmg = this.iedFinalDmg2();
-    const finalFinal =
-      ((dmg + boss + 100) * iedFinalDmg * (att / 100 + 1)) / 100;
-    return finalFinal.toFixed(2);
+  //Returns final Ied
+  statsIed = (choice) => {
+    const { ied } = this.state.statsWindow;
+    const iedArray =
+      choice === "actual"
+        ? [...this.state.totalWse.ied]
+        : [...this.state.totalWse2.ied];
+    return this.calculateIed([...iedArray, ied]);
   };
 
   //To prevent NaN problem
   safeParseFloat = (value) => {
     const num = parseFloat(value);
-    return isNaN(num) ? 0 : num;
+    return isNaN(num) ? 0 : Number(num);
   };
 
   handleInputField = (value, option, option_main) => {
-    const inputs = [...this.state.iedFill];
+    const inputs = [...this.state.additionalStats];
     const index_main = inputs.indexOf(option_main);
     const index = inputs[index_main].field.indexOf(option);
 
     const old_value = inputs[index_main].field[index].value;
-
-    const new_value = parseInt(this.safeParseFloat(value));
+    const new_value = this.safeParseFloat(value);
 
     //0 for ied, 1 for bd, 2 for dmg
     switch (index_main) {
@@ -2582,7 +2560,6 @@ class Counters extends Component {
 
     inputs[index_main].field[index].value = new_value;
     this.setState({ inputs });
-    //console.log(this.state.iedFill);
   };
 
   handleInputFieldAtt = (value, option) => {
@@ -2590,8 +2567,7 @@ class Counters extends Component {
     const index = inputs[0].field.indexOf(option);
 
     const old_value = inputs[0].field[index].value;
-
-    const new_value = parseInt(this.safeParseFloat(value));
+    const new_value = this.safeParseFloat(value);
     this.handleAtt(old_value, new_value);
 
     inputs[0].field[index].value = new_value;
@@ -2643,9 +2619,8 @@ class Counters extends Component {
 
     stats.ied = this.calculateIed(ieds);
 
-    this.setState({ statsWindow: stats });
+    this.setState({ statsWindow: stats }, this.handleAllFinalStats);
     this.setState({ inputs });
-    this.iedCalculator(ieds);
     this.setState({ ied: ieds });
   };
 
@@ -2655,26 +2630,19 @@ class Counters extends Component {
     const index = inputs[0].test.indexOf(option);
 
     const old_value = inputs[0].test[index].value;
-    var new_value = this.safeParseFloat(value);
+    const new_value = this.safeParseFloat(value);
 
-    switch (index) {
-      //boss dmg
-      case 0:
-        stats.boss -= old_value;
-        stats.boss += new_value;
-        break;
-      //damage
-      case 1:
-        stats.damage -= old_value;
-        stats.damage += new_value;
-        break;
-      default:
-        break;
+    if (index === 0) {
+      stats.boss -= old_value;
+      stats.boss += new_value;
+    } else if (index === 1) {
+      stats.damage -= old_value;
+      stats.damage += new_value;
     }
 
     inputs[0].test[index].value = new_value;
 
-    this.setState({ statsWindow: stats });
+    this.setState({ statsWindow: stats }, this.handleAllFinalStats);
     this.setState({ inputs });
   };
 
@@ -2709,42 +2677,36 @@ class Counters extends Component {
     totalWse2.damage = totalWse.damage;
     totalWse2.ied = [...totalWse.ied];
 
-    this.setState({ totalWse2 });
+    this.setState({ totalWse2 }, () => this.handleFinalStats("compare"));
     this.setState({ main2 });
     this.setState({ add2 });
   };
 
   handleResult = () => {
-    var resultsClass = "";
-
-    const final1 = parseFloat(this.finalFinal());
-    const final2 = parseFloat(this.finalFinal2());
+    const results = { ...this.state.resultsDisplay };
+    const final1 = this.state.statsDetails.final;
+    const final2 = this.state.statsDetailsCompare.final;
     var diff = 0;
-    var display = "";
 
-    if (final1 === final2) {
-      display = "Your WSE combinations have the same final damage output.";
-      resultsClass = "div-results-same";
-    } else if (final1 > final2) {
+    if (final1 > final2) {
       diff = (final1 / final2 - 1) * 100;
       diff = diff.toFixed(2);
-      display = "Your first WSE combination is stronger by " + diff + "%.";
-      resultsClass = "div-results-left";
-    } else {
+      results.display =
+        "Your first WSE combination is stronger by " + diff + "%.";
+      results.class = "div-results-left";
+    } else if (final1 < final2) {
       diff = (final2 / final1 - 1) * 100;
       diff = diff.toFixed(2);
-      display = "Your second WSE combination is stronger by " + diff + "%.";
-      resultsClass = "div-results-right";
+      results.display =
+        "Your second WSE combination is stronger by " + diff + "%.";
+      results.class = "div-results-right";
+    } else {
+      results.display =
+        "Your WSE combinations have the same final damage output.";
+      results.class = "div-results-same";
     }
 
-    return [display, resultsClass];
-  };
-
-  handleBD = () => {
-    const skills = [...this.state.skills];
-    skills[0].checked = !skills[0].checked;
-
-    this.setState({ skills: skills });
+    this.setState({ resultsDisplay: results });
   };
 
   render() {
@@ -2917,7 +2879,7 @@ class Counters extends Component {
 
         {/* For additional inputs */}
         <div className="table-sub">
-          {this.state.iedFill.map((input) => (
+          {this.state.additionalStats.map((input) => (
             <Table2
               key={input.id} // check this pls
               input={input}
@@ -2976,39 +2938,12 @@ class Counters extends Component {
               </div>
             </div>
 
-            <div className="stats_div">
-              <section className="stats-details">
-                <p className="stats-header-1">Stats Details</p>
-                <table className="stats-table">
-                  <tbody>
-                    <tr className="tr">
-                      <th className="th">Attack %</th>
-                      <td className="td">{this.finalAtt()}</td>
-                    </tr>
-                    <tr className="tr">
-                      <th className="th">Magic Attack %</th>
-                      <td className="td">{this.finalAtt()}</td>
-                    </tr>
-                    <tr className="tr">
-                      <th className="th">Damage %</th>
-                      <td className="td">{this.finalDmg()}</td>
-                    </tr>
-                    <tr className="tr">
-                      <th className="th">Boss Damage %</th>
-                      <td className="td">{this.finalBoss()}</td>
-                    </tr>
-                    <tr className="tr">
-                      <th className="th">Ignore Def %</th>
-                      <td className="td">{this.state.enemyDef.value}</td>
-                    </tr>
-                    <tr className="tr">
-                      <th className="th">Final Score</th>
-                      <td className="td">{this.finalFinal()}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </section>
-            </div>
+            <StatsDetails
+              display={this.state.statsDisplay}
+              value={this.state.statsDetails}
+              ied={this.state.enemyDef.value}
+              displayCss="stats-header-1"
+            />
           </div>
 
           {/* for comparison, second wse */}
@@ -3041,46 +2976,20 @@ class Counters extends Component {
               </div>
             </div>
 
-            <div className="stats_div">
-              <section className="stats-details">
-                <p className="stats-header-2">Stats Details</p>
-                <table className="stats-table">
-                  <tbody>
-                    <tr className="tr">
-                      <th className="th">Attack %</th>
-                      <td className="td">{this.finalAtt()}</td>
-                    </tr>
-                    <tr className="tr">
-                      <th className="th">Magic Attack %</th>
-                      <td className="td">{this.finalAtt()}</td>
-                    </tr>
-                    <tr className="tr">
-                      <th className="th">Damage %</th>
-                      <td className="td">{this.finalDmg()}</td>
-                    </tr>
-                    <tr className="tr">
-                      <th className="th">Boss Damage %</th>
-                      <td className="td">{this.finalBoss()}</td>
-                    </tr>
-                    <tr className="tr">
-                      <th className="th">Ignore Def %</th>
-                      <td className="td">{this.state.enemyDef.value}</td>
-                    </tr>
-                    <tr className="tr">
-                      <th className="th">Final Score</th>
-                      <td className="td">{this.finalFinal()}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </section>
-            </div>
+            <StatsDetails
+              display={this.state.statsDisplay}
+              value={this.state.statsDetailsCompare}
+              ied={this.state.enemyDef.value}
+              displayCss="stats-header-2"
+            />
           </div>
         </div>
         <button className="button-duplicate" onClick={this.handleDuplicate}>
           Duplicate WSE
         </button>
-        {/* <button onClick={this.handleBD}>Click me pls</button> */}
-        <div className={this.handleResult()[1]}>{this.handleResult()[0]}</div>
+        <div className={this.state.resultsDisplay.class}>
+          {this.state.resultsDisplay.display}
+        </div>
       </div>
     );
   }
